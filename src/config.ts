@@ -7,9 +7,9 @@ import type {
 import { LinkPreset } from './types/config'
 
 export const siteConfig: SiteConfig = {
-  title: 'Fuwari',
-  subtitle: 'Demo Site',
-  lang: 'en',         // 'en', 'zh_CN', 'zh_TW', 'ja', 'ko', 'es', 'th'
+  title: 'Alaye的小屋',
+  subtitle: '技术分享，碎片小记',
+  lang: 'zh_CN',         // 'en', 'zh_CN', 'zh_TW', 'ja', 'ko', 'es', 'th'
   themeColor: {
     hue: 250,         // Default hue for the theme color, from 0 to 360. e.g. red: 0, teal: 200, cyan: 250, pink: 345
     fixed: false,     // Hide the theme color picker for visitors
@@ -29,11 +29,11 @@ export const siteConfig: SiteConfig = {
     depth: 2                // Maximum heading depth to show in the table, from 1 to 3
   },
   favicon: [    // Leave this array empty to use the default favicon
-    // {
-    //   src: '/favicon/icon.png',    // Path of the favicon, relative to the /public directory
-    //   theme: 'light',              // (Optional) Either 'light' or 'dark', set only if you have different favicons for light and dark mode
-    //   sizes: '32x32',              // (Optional) Size of the favicon, set only if you have favicons of different sizes
-    // }
+    {
+      src: '/favicon/favicon.ico',    // Path of the favicon, relative to the /public directory
+      // theme: 'light',              // (Optional) Either 'light' or 'dark', set only if you have different favicons for light and dark mode
+      // sizes: '32x32',              // (Optional) Size of the favicon, set only if you have favicons of different sizes
+    }
   ]
 }
 
@@ -51,10 +51,11 @@ export const navBarConfig: NavBarConfig = {
 }
 
 export const profileConfig: ProfileConfig = {
-  avatar: 'assets/images/demo-avatar.png',  // Relative to the /src directory. Relative to the /public directory if it starts with '/'
-  name: 'Lorem Ipsum',
-  bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+  avatar: 'assets/images/avatar-alaye.png',  // Relative to the /src directory. Relative to the /public directory if it starts with '/'
+  name: 'Alaye Dong',
+  bio: '求知若饥，虚心若愚',
   links: [
+    // TODO 修改Links
     {
       name: 'Twitter',
       icon: 'fa6-brands:twitter',       // Visit https://icones.js.org/ for icon codes
@@ -70,7 +71,7 @@ export const profileConfig: ProfileConfig = {
     {
       name: 'GitHub',
       icon: 'fa6-brands:github',
-      url: 'https://github.com/saicaca/fuwari',
+      url: 'https://github.com/Alaye-Dong',
     },
   ],
 }
