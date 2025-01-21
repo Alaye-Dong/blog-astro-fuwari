@@ -32,13 +32,21 @@ jobs:
           pnpm install       # 安装依赖
           pnpm run build     # 构建 Astro 项目
 
-      # Step 5: 将静态文件推送到云服务器
-      - name: Deploy to Cloud Server
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.SERVER_HOST }}       # 云服务器 IP 或域名
-          username: ${{ secrets.SERVER_USER }}   # SSH 用户名
-          key: ${{ secrets.SERVER_KEY }}         # 私钥
-          port: ${{ secrets.SERVER_PORT }}       # SSH 端口
-          source: dist/                          # Astro 输出目录
-          target: /www/wwwroot/blog-astro-fuwari/          # 部署到服务器的路径
+      # Step 5: 将静态文件推送到 gh-pages 分支
+      - name: Push to gh-pages branch
+        run: |
+          # 配置 Git 用户信息
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+
+          # 确保我们正在推送到 gh-pages 分支
+          git checkout gh-pages || git checkout --orphan gh-pages
+          
+          # 删除旧的静态文件并复制新的静态文件
+          rm -rf ./*
+          cp -r ../dist/* ./
+
+          # 提交并推送更改
+          git add .
+          git commit -m "Deploy new static files"
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} gh-pages --force
