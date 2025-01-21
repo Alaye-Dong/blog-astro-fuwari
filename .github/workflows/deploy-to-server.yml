@@ -39,12 +39,14 @@ jobs:
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
 
-          # 确保我们正在推送到 gh-pages 分支
+          # 检查是否存在 gh-pages 分支，若没有则创建
           git checkout gh-pages || git checkout --orphan gh-pages
-          
+
           # 删除旧的静态文件并复制新的静态文件
           rm -rf ./*
-          cp -r ../dist/* ./
+          
+          # 确保 dist 文件夹存在并复制文件
+          cp -r ./dist/* ./
 
           # 提交并推送更改
           git add .
