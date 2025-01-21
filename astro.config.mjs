@@ -18,6 +18,15 @@ import { GithubCardComponent } from "./src/plugins/rehype-component-github-card.
 import { parseDirectiveNode } from "./src/plugins/remark-directive-rehype.js";
 import { remarkExcerpt } from "./src/plugins/remark-excerpt.js";
 import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
+import { 
+  transformerMetaHighlight, 
+  transformerMetaWordHighlight, 
+  transformerNotationDiff, 
+  transformerNotationErrorLevel, 
+  transformerNotationHighlight, 
+  transformerNotationWordHighlight, 
+} from "@shikijs/transformers"; 
+import { remarkCodeTitle } from "./src/plugins/remark-code-title.js"; 
 
 // https://astro.build/config
 export default defineConfig({
@@ -63,6 +72,17 @@ export default defineConfig({
     }),
   ],
   markdown: {
+    shikiConfig: {
+      transformers: [
+        // ...
+        transformerNotationDiff(), 
+        transformerNotationHighlight(), 
+        transformerNotationWordHighlight(), 
+        transformerNotationErrorLevel(), 
+        transformerMetaHighlight(), 
+        transformerMetaWordHighlight(), 
+      ],
+    },
     remarkPlugins: [
       remarkMath,
       remarkReadingTime,
@@ -71,6 +91,7 @@ export default defineConfig({
       remarkDirective,
       remarkSectionize,
       parseDirectiveNode,
+      remarkCodeTitle,
     ],
     rehypePlugins: [
       rehypeKatex,
