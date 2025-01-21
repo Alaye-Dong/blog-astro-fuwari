@@ -30,7 +30,7 @@ jobs:
 
       # Step 4: 将静态文件推送到云服务器
       - name: Deploy to Cloud Server
-        uses: appleboy/scp-action@v0.1.8
+        uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.SERVER_HOST }}       # 云服务器 IP 或域名
           username: ${{ secrets.SERVER_USER }}   # SSH 用户名
