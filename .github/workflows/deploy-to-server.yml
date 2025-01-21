@@ -22,13 +22,17 @@ jobs:
           cache: ${{ steps.detect-package-manager.outputs.manager }}
           cache-dependency-path: ${{ env.BUILD_PATH }}/${{ steps.detect-package-manager.outputs.lockfile }}
 
-      # Step 3: 安装依赖并构建
+      # Step 3: 安装 pnpm
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      # Step 4: 安装依赖并构建
       - name: Install dependencies and build
         run: |
           pnpm install       # 安装依赖
-          pnpm run build  # 构建 Astro 项目
+          pnpm run build     # 构建 Astro 项目
 
-      # Step 4: 将静态文件推送到云服务器
+      # Step 5: 将静态文件推送到云服务器
       - name: Deploy to Cloud Server
         uses: appleboy/scp-action@v0.1.7
         with:
