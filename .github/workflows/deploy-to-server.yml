@@ -1,0 +1,40 @@
+name: Deploy Astro to Cloud Server
+
+on:
+  push:
+    branches:
+      - main  # 监控 main 分支的推送事件
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: 检出代码
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: 设置 Node.js 环境
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: ${{ steps.detect-package-manager.outputs.manager }}
+          cache-dependency-path: ${{ env.BUILD_PATH }}/${{ steps.detect-package-manager.outputs.lockfile }}
+
+      # Step 3: 安装依赖并构建
+      - name: Install dependencies and build
+        run: |
+          pnpm install       # 安装依赖
+          pnpm run build  # 构建 Astro 项目
+
+      # Step 4: 将静态文件推送到云服务器
+      - name: Deploy to Cloud Server
+        uses: appleboy/scp-action@v0.1.8
+        with:
+          host: ${{ secrets.SERVER_HOST }}       # 云服务器 IP 或域名
+          username: ${{ secrets.SERVER_USER }}   # SSH 用户名
+          key: ${{ secrets.SERVER_KEY }}         # 私钥
+          port: ${{ secrets.SERVER_PORT }}       # SSH 端口
+          source: dist/                          # Astro 输出目录
+          target: /www/wwwroot/blog-astro-fuwari/          # 部署到服务器的路径
