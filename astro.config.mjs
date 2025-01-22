@@ -30,7 +30,7 @@ import { remarkCodeTitle } from "./src/plugins/remark-code-title.js";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://alayedong.cn/",
+  site: "https://blog.alayedong.cn/",
   base: "/",
   trailingSlash: "always",
   integrations: [
