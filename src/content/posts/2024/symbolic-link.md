@@ -2,16 +2,18 @@
 title: 符号链接
 author: alaye
 published: 2024-06-05
-categories: [Blogging, Tutorial]
-tags: [Windows]
+category: 技术
+tags:
+  - Windows
 render_with_liquid: false
 ---
 
 ## 什么是符号链接
 
-符号链接，又常被称为软链接，是现代操作系统中（如Linux、macOS及Windows的新版本）提供的一种高级文件系统特性。它实质上是一个特殊类型的文件，其功能在于指向文件系统中另一个文件或目录的位置。下面是关于符号链接的几个核心概念：
+符号链接，又常被称为软链接，是现代操作系统中（如 Linux、macOS 及 Windows 的新版本）提供的一种高级文件系统特性。它实质上是一个特殊类型的文件，其功能在于指向文件系统中另一个文件或目录的位置。下面是关于符号链接的几个核心概念：
 
 ### 特性概览
+
 * 路径表示：符号链接内的路径可以是绝对的，直接指向文件系统的特定位置；也可以是相对的，基于链接所在目录来定位目标。
 
 * 透明操作：用户和应用程序对符号链接进行读写操作时，操作系统会无缝地重定向这些操作至目标文件或目录，保证了使用的透明性。
@@ -29,9 +31,10 @@ render_with_liquid: false
 * 权限管理：符号链接自身的权限控制独立于目标对象，为安全管理和访问控制提供了额外的灵活性。
 
 ### 应用场景
+
 * 路径简化：通过创建简短或逻辑清晰的链接路径，便于用户和程序快速访问深层或复杂的文件结构。
 
-* 快捷方式：类似Windows的快捷方式功能，为频繁访问的文件或目录提供便捷入口。
+* 快捷方式：类似 Windows 的快捷方式功能，为频繁访问的文件或目录提供便捷入口。
 
 * 数据共享：实现文件共享的同时，无需复制文件，节省存储空间并保持数据一致性。
 
@@ -41,11 +44,11 @@ render_with_liquid: false
 
 ## 目标
 
-本教程指导您在Windows操作系统中利用命令行工具`mklink`，创建指向特定文件的相对路径符号链接。确保即使源文件夹位置变动，该链接依旧保持有效。
+本教程指导您在 Windows 操作系统中利用命令行工具 `mklink`，创建指向特定文件的相对路径符号链接。确保即使源文件夹位置变动，该链接依旧保持有效。
 
 ## 准备工作
 
-- **操作系统要求**：适用于Windows系统。
+- **操作系统要求**：适用于 Windows 系统。
 - **管理员权限**：确保拥有足够的权限来执行创建符号链接的操作。
 - **命令行工具**：打开“命令提示符（管理员）”或“Windows PowerShell（管理员）”。
 
@@ -53,20 +56,20 @@ render_with_liquid: false
 
 ### 1. 导航至工作目录
 
-1. **打开命令行工具**：按`Win + X`，选择“命令提示符（管理员）”或“Windows PowerShell（管理员）”。
-2. **切换目录**：使用`cd`命令进入您打算创建符号链接的目录。例如，若目录为`D:\Alaye\GitHubDesktop\SmartCar_BST_Epoilt_Copy`，输入：
+1. **打开命令行工具**：按 `Win + X`，选择“命令提示符（管理员）”或“Windows PowerShell（管理员）”。
+2. **切换目录**：使用 `cd` 命令进入您打算创建符号链接的目录。例如，若目录为 `D:\Alaye\GitHubDesktop\SmartCar_BST_Epoilt_Copy`，输入：
    ```powershell
    cd /d D:\Alaye\GitHubDesktop\SmartCar_BST_Epoilt_Copy
    ```
 
 ### 2. 创建符号链接
 
-1. **执行命令**：使用`mklink`命令创建指向目标文件的相对路径符号链接。假设目标文件为`D:\Alaye\GitHubDesktop\SmartCar_BST_Epoilt_Copy\STC32F_Code\Project\MDK\EPOILT.uvproj`，并在当前`D:\Alaye\GitHubDesktop\SmartCar_BST_Epoilt_Copy`目录下创建同名链接，命令如下：
+1. **执行命令**：使用 `mklink` 命令创建指向目标文件的相对路径符号链接。假设目标文件为 `D:\Alaye\GitHubDesktop\SmartCar_BST_Epoilt_Copy\STC32F_Code\Project\MDK\EPOILT.uvproj`，并在当前 `D:\Alaye\GitHubDesktop\SmartCar_BST_Epoilt_Copy` 目录下创建同名链接，命令如下：
    ```powershell
    mklink "EPOILT.uvproj" ".\STC32F_Code\Project\MDK\EPOILT.uvproj"
    ```
-   
-   其中，“EPOILT.uvproj”是新创建的链接名称，而`.\STC32F_Code\Project\MDK\EPOILT.uvproj`表示从当前目录出发的相对路径。
+
+   其中，“EPOILT.uvproj”是新创建的链接名称，而 `.\STC32F_Code\Project\MDK\EPOILT.uvproj` 表示从当前目录出发的相对路径。
 
 ### 3. 验证与测试
 

@@ -1,22 +1,24 @@
 ---
 title: 修改Windows任务栏字体颜色
-description: ''
+description: ""
 author: alaye
 published: 2024-06-13
-categories: [Blogging, Tutorial]
-tags: [Windows, Taskbar]
+category: 技术
+tags:
+  - Windows
+  - Taskbar
 render_with_liquid: false
 ---
 
 ## 使用场景
 
-Windows并不会去根据任务栏背景色吊改变字体颜色，当使用例如[TranslucentTB](https://github.com/TranslucentTB/TranslucentTB)，在一些背景下，导致任务栏暗色时，默认字体显示仍为黑色，导致观察困难，可读性差。所以可以通过修改注册表改变任务栏默认字体颜色。
+Windows 并不会去根据任务栏背景色吊改变字体颜色，当使用例如 [TranslucentTB](https://github.com/TranslucentTB/TranslucentTB)，在一些背景下，导致任务栏暗色时，默认字体显示仍为黑色，导致观察困难，可读性差。所以可以通过修改注册表改变任务栏默认字体颜色。
 
 ![1718241252560](./assets/change-windows-taskbar-font-color/1718241252560.png)
 
 ## 修改注册表
 
-新建一个.txt文件，打开记事本，复制以下内容，粘贴到记事本中，保存为.reg文件，双击打开，即可修改注册表。
+新建一个.txt 文件，打开记事本，复制以下内容，粘贴到记事本中，保存为.reg 文件，双击打开，即可修改注册表。
 
 ```text
 Windows Registry Editor Version 5.00
@@ -29,7 +31,7 @@ Windows Registry Editor Version 5.00
 
 ## 回归默认设置
 
-类似之前的方法，将 `ColorPrevalence`的值设置为 `0`，再双击打开.reg文件修改。
+类似之前的方法，将 `ColorPrevalence` 的值设置为 `0`，再双击打开.reg 文件修改。
 
 ```text
 Windows Registry Editor Version 5.00
