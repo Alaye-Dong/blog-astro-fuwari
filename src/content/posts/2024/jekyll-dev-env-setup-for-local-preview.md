@@ -2,9 +2,7 @@
 title: 搭建Jekyll开发环境实现本地预览
 author: alaye
 published: 2024-04-26
-categories:
-  - Blogging
-  - Tutorial
+category: 技术
 tags:
   - Jekyll
 render_with_liquid: false

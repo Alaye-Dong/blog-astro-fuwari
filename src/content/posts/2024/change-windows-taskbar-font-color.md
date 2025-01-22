@@ -1,10 +1,12 @@
 ---
 title: 修改Windows任务栏字体颜色
-description: ''
+description: ""
 author: alaye
 published: 2024-06-13
-categories: [Blogging, Tutorial]
-tags: [Windows, Taskbar]
+category: 技术
+tags:
+  - Windows
+  - Taskbar
 render_with_liquid: false
 ---
 

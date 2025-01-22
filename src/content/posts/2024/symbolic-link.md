@@ -2,8 +2,9 @@
 title: 符号链接
 author: alaye
 published: 2024-06-05
-categories: [Blogging, Tutorial]
-tags: [Windows]
+category: 技术
+tags:
+  - Windows
 render_with_liquid: false
 ---
 

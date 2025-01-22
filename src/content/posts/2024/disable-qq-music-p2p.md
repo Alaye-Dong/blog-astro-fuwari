@@ -1,18 +1,17 @@
 ---
 title: 关闭QQ音乐P2P
-description: ''
+description: ""
 author: alaye
 published: 2024-08-03
-categories: [Blogging, Daily]
-tags: [P2P, QQ-Music, Windows]
+category: 技术
+tags:
+  - P2P
+  - QQ-Music
+  - Windows
 render_with_liquid: flase
 pin: false
 math: flase
 mermaid: false
-# image:
-  # path: 
-  # lqip: 
-  # alt: 
 ---
 
 ## 引

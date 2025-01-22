@@ -283,8 +283,8 @@
   "lintCommands": [],
   "customRegexes": [],
   "commonStyles": {
-    "aliasArrayStyle": "single-line",
-    "tagArrayStyle": "single-line",
+    "aliasArrayStyle": "single string comma delimited",
+    "tagArrayStyle": "single string comma delimited",
     "minimumNumberOfDollarSignsToBeAMathBlock": 2,
     "escapeCharacter": "\"",
     "removeUnnecessaryEscapeCharsForMultiLineArrays": false

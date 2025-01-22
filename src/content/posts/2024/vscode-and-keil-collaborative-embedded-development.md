@@ -2,9 +2,13 @@
 title: VSCode与Keil协同嵌入式开发
 author: alaye
 published: 2024-07-23
-categories: [Blogging, Tutorial]
+category: 技术
 image: ./assets/vscode-and-keil-collaborative-embedded-development/cover.png
-tags: [Keil, VSCode, 嵌入式开发, 智能车]
+tags:
+  - Keil
+  - VSCode
+  - 嵌入式开发
+  - 智能车
 render_with_liquid: flase
 ---
 

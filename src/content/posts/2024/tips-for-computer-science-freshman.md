@@ -2,8 +2,11 @@
 title: 给计算机专业准大一新生的一些建议
 author: alaye
 published: 2024-08-07
-categories: [Blogging, Daily]
-tags: [Computer-Science, University ,Study]
+category: 生活
+tags:
+  - Computer-Science
+  - University
+  - Study
 render_with_liquid: flase
 pin: false
 math: flase
