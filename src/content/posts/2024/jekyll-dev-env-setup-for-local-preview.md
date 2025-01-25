@@ -1,5 +1,5 @@
 ---
-title: 搭建Jekyll开发环境实现本地预览
+title: 搭建 Jekyll 开发环境实现本地预览
 author: alaye
 published: 2024-04-26
 category: 技术

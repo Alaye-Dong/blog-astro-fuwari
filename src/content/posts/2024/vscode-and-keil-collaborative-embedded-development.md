@@ -1,5 +1,5 @@
 ---
-title: VSCode与Keil协同嵌入式开发
+title: VSCode 与 Keil 协同嵌入式开发
 author: alaye
 published: 2024-07-23
 category: 技术
