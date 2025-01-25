@@ -11,6 +11,7 @@ tags:
   - 嵌入式开发
   - 智能车
 render_with_liquid: flase
+updated: 2025-01-25
 ---
 
 ## 引言
@@ -25,10 +26,10 @@ render_with_liquid: flase
 
 *VSCode*和*Keil*的安装与基础配置，网络上已经有很多教程，可自行搜索，这里不再赘述。
 
+>[!TIP]
 > *VSCode*：[下载地址](https://code.visualstudio.com/download)
 > 
 > *Keil*：[下载地址](https://www.keil.com/download/product/)
-{: .prompt-tip }
 
 ## 安装和配置*Keil uVision Assistant*
 
@@ -36,8 +37,8 @@ render_with_liquid: flase
 
 ![VSCode拓展搜索](./assets/vscode-and-keil-collaborative-embedded-development/VSCode拓展搜索.png)
 
+> [!INFO]
 > 这里搜索结果可能会出现两个名字类似的插件，这里做出解释：*Keil Assistant* 已于 *Jun 13, 2021* 归档转为只读。*Keil uVision Assistant* 是 *Keil Assistant* 的后续版本，由另外一个开发者 *jacksonjim* 负责继续更新及维护。 
-{: .prompt-info }
 
 点击插件右侧的 `⚙️`-`拓展设置` 根据所开发的单片机芯片的架构和*Keil*的安装目录，完成插件的基础配置。
 
@@ -85,8 +86,8 @@ render_with_liquid: flase
 
 所以需要在代码头文件通过宏定义进行修复，具体请参照 [关于 C51/C251 的中断提示问题](https://github.com/jacksonjim/keil-assistant/blob/master/README.md)。将所有 `interrupt x` 改为 `INTERRUPT(x)` 并在头文件中加入对应芯片架构的替换修复的宏定义。
 
+>[!WARNING]
 >如果项目涉及到日后的他人维护，为避免产生不必要的不解或错误，注意在代码中对于解决本问题做出的修改**进行必要的注释**。
-{: .prompt-warning }
 
 #### 中断函数修改
 
