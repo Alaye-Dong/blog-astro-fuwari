@@ -5,8 +5,8 @@ author: alaye
 published: 2024-08-03
 category: 技术
 tags:
+  - 杂谈
   - P2P
-  - QQ-Music
   - Windows
 render_with_liquid: flase
 pin: false

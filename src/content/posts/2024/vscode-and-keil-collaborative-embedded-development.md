@@ -5,6 +5,7 @@ published: 2024-07-23
 category: 技术
 image: ./assets/vscode-and-keil-collaborative-embedded-development/cover.png
 tags:
+  - 教程
   - Keil
   - VSCode
   - 嵌入式开发

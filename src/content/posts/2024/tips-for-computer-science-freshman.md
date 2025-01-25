@@ -4,9 +4,8 @@ author: alaye
 published: 2024-08-07
 category: 生活
 tags:
-  - Computer-Science
-  - University
-  - Study
+  - 杂谈
+  - 大学
 render_with_liquid: flase
 pin: false
 math: flase

@@ -5,6 +5,7 @@ updated: 2025-01-22
 description: ""
 image: ""
 tags:
+  - 教程
   - Linux
   - Github
   - 部署

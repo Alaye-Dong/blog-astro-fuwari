@@ -4,7 +4,8 @@ author: alaye
 published: 2024-04-26
 category: 技术
 tags:
-  - Jekyll
+  - 教程
+  - Jeklly
 render_with_liquid: false
 ---
 
