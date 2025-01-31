@@ -1,3 +1,4 @@
+
 ---
 title: 利用 Github Actions 构建并部署项目到云服务器
 published: 2025-01-22
@@ -55,12 +56,12 @@ sudo systemctl status sshd
 
 将以下信息添加到 GitHub 仓库的 **Settings > Secrets and variables > Actions > New repository secret**：
 
-| Secret 名称      | 内容                      |
-|------------------|---------------------------|
-| `SERVER_KEY`     | 私钥内容 (`github_actions_key`) |
-| `SERVER_HOST`    | 服务器 IP 或域名           |
-| `SERVER_USER`    | SSH 用户名                |
-| `SERVER_PORT`    | SSH 端口（默认 22）        |
+| Secret 名称   | 内容                            |
+| ------------- | ------------------------------- |
+| `SERVER_KEY`  | 私钥内容 (`github_actions_key`) |
+| `SERVER_HOST` | 服务器 IP 或域名                |
+| `SERVER_USER` | SSH 用户名                      |
+| `SERVER_PORT` | SSH 端口（默认 22）             |
 
 ---
 
