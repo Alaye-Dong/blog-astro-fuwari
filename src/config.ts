@@ -69,6 +69,11 @@ export const profileConfig: ProfileConfig = {
     //   url: 'https://store.steampowered.com',
     // },
     {
+      name: 'Email',
+      icon: 'material-symbols:mail-outline-rounded',
+      url: 'mailto:alayevast@outlook.com',
+    },
+    {
       name: 'GitHub',
       icon: 'fa6-brands:github',
       url: 'https://github.com/Alaye-Dong',
