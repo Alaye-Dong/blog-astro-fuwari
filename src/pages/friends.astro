@@ -3,7 +3,7 @@ import MainGridLayout from "../layouts/MainGridLayout.astro";
 
 import { getEntry } from "astro:content";
 import Markdown from "@components/misc/Markdown.astro";
-import Comments from '@components/widget/Comments.svelte'
+import Comments from "@components/widget/Comments.svelte";
 import I18nKey from "../i18n/i18nKey";
 import { i18n } from "../i18n/translation";
 
@@ -12,21 +12,21 @@ const friendsPost = await getEntry("spec", "friends");
 const { Content } = await friendsPost.render();
 
 const items = [
-  {  
-    title: 'KINDYEAR',  
-    imgurl: 'https://www.kindyear.cn/img/kindyear.png',  
-    desc: '技施于手，道养于心',  
-    siteurl: 'https://www.kindyear.cn',  
-    tags: ['技术','网络工程'],  
-  },
-  {
-    title: '天翔TNXGの空间站',  
-    imgurl: 'https://api-space.tnxg.top/avatar?s=qq',  
-    desc: '明日尚未到来，希望凝于心上',  
-    siteurl: 'https://tnxgmoe.com',  
-    tags: ['技术','全栈开发'],  
-  }
-]
+	{
+		title: "KINDYEAR",
+		imgurl: "https://www.kindyear.cn/img/kindyear.png",
+		desc: "技施于手，道养于心",
+		siteurl: "https://www.kindyear.cn",
+		tags: ["技术", "网络工程"],
+	},
+	{
+		title: "天翔TNXGの空间站",
+		imgurl: "https://api-space.tnxg.top/avatar?s=qq",
+		desc: "明日尚未到来，希望凝于心上",
+		siteurl: "https://tnxgmoe.com",
+		tags: ["技术", "全栈开发"],
+	},
+];
 ---
 
 <MainGridLayout
