@@ -3,7 +3,7 @@ import "@fontsource-variable/jetbrains-mono";
 import "@fontsource-variable/jetbrains-mono/wght-italic.css";
 
 interface Props {
-	class: string;
+  class: string;
 }
 const className = Astro.props.class;
 ---
@@ -20,7 +20,7 @@ const className = Astro.props.class;
 <script>
   const observer = new MutationObserver(addPreCopyButton);
   observer.observe(document.body, { childList: true, subtree: true });
-  
+
   function addPreCopyButton() {
     observer.disconnect();
 
@@ -71,76 +71,3 @@ const className = Astro.props.class;
     observer.observe(document.body, { childList: true, subtree: true });
   }
 </script>
-
-<style is:global>
-  /* transformerNotationDiff */
-  .line.diff.add span {
-    background-color: #174d2c !important;
-  }
-
-  .line.diff.remove span {
-    background-color: #440e11 !important;
-  }
-
-  .line.diff.add:before {
-    color: #4affa8;
-  }
-
-  .line.diff.remove:before {
-    color: #ff5e61;
-  }
-
-  /* transformerNotationHighlight */
-  .line.highlighted span {
-    background-color: #3c3f45;
-  }
-  .highlighted-word {
-    background-color: #4b4d50;
-    border: 1px solid #464b52;
-    padding: 1px 3px;
-    margin: -1px -2px;
-    border-radius: 4px;
-  }
-  /* transformerNotationErrorLevel */
-  .line.highlighted.error span {
-    background-color: #440e11;
-  }
-  .line.highlighted.warning span {
-    background-color: #583410;
-  }
-
-  /* remark-code-title */
-  .remark-code-title {
-    color: white;
-    background: #24292e;
-    font-weight: normal;
-    font-size: medium;
-    margin: 0px 0px -35px 0px;
-    border-radius: 0.75rem 0.75rem 0rem 0rem;
-  }
-
-  .remark-code-title #filename-with-lang {
-    padding: 8px 25px 8px 25px;
-    display: flex;
-    direction: row;
-    justify-content: space-between;
-  }
-  .remark-code-title #separate-line {
-    border-top: 1px solid rgb(63, 62, 62);
-  }
-  .remark-code-title #only-lang {
-    padding: 8px 25px 8px 25px;
-    display: flex;
-    direction: row;
-    justify-content: end;
-  }
-
-  @media screen and (max-width: 1024px) {
-    .remark-code-title {
-      font-size: small;
-    }
-    .remark-code-title #row2 {
-      padding: 8px 0px 6px 0px;
-    }
-  }
-</style>
