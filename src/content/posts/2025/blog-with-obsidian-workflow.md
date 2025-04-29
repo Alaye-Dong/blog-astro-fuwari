@@ -6,6 +6,7 @@ description: ""
 image: ""
 tags:
   - 教程
+  - Blogging
 category: 技术
 draft: false
 ---
@@ -44,7 +45,7 @@ Obsidian 提供了截然不同的体验：
 
 ## 快速上手指南
 
-1. 在 Obsidian 中选择 `管理仓库`，打开本地仓库，将一个本地文件夹作为仓库在 Obsidian 中打开。
+1. 在 Obsidian 中选择 `管理仓库`，打开本地仓库，将一个本地文件夹作为仓库在 Obsidian 中打开
 2. 定位到博客源码中 Markdown 文章存储目录
 3. 开始享受流畅的写作体验！
 
