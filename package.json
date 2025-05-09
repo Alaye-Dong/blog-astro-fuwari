@@ -30,6 +30,7 @@
     "@shikijs/transformers": "^2.0.3",
     "@swup/astro": "^1.6.0",
     "@tailwindcss/typography": "^0.5.16",
+    "@vercel/speed-insights": "^1.2.0",
     "astro": "5.7.12",
     "astro-icon": "^1.1.5",
     "hastscript": "^9.0.1",
