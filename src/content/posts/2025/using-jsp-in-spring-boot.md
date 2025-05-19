@@ -1,13 +1,13 @@
 ---
 title: 在 Springboot 项目中使用 JSP
 published: 2025-05-09
-updated: 2025-05-09
+updated: 2025-05-19
 description: ""
 image: ""
 tags:
   - 教程
-  - Spring
   - SpringBoot
+  - JSP
 category: 技术
 draft: false
 ---
