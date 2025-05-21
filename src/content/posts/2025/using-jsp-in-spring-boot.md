@@ -12,11 +12,9 @@ category: 技术
 draft: false
 ---
 
-## 在 Springboot 项目中使用 JSP
-
 在现代 Web 开发中，虽然前后端分离的开发方式或者 Thymeleaf、Freemarker 等模板引擎更为流行，但在某些传统项目或特殊环境（如部分企业、~~我大学的 SSM 课程作业~~）中，JSP（Java Server Pages） 仍有一定的使用场景。本文将详细介绍如何在一个 Spring Boot 项目中配置并使用 JSP。
 
-### 创建 Spring Boot 项目
+## 创建 Spring Boot 项目
 
 你可以通过 [Spring Initializr](https://start.spring.io/) 创建一个基础的 Spring Boot 项目，选择以下依赖项：
 
@@ -28,7 +26,7 @@ draft: false
 > [!TIP]
 > IDEA 中集成了 Spring Initializr，新建项目时可以直接使用 Spring Initializr
 
-### 引入 JSP 相关依赖
+## 引入 JSP 相关依赖
 
 由于 Spring Boot 默认不支持 JSP，我们需要手动引入相关依赖。编辑 `pom.xml` 文件，添加以下内容：
 
@@ -47,11 +45,11 @@ draft: false
 </dependency>
 ```
 
-### 配置 Web 资源目录与结构
+## 配置 Web 资源目录与结构
 
 Spring Boot 默认使用 `resources/templates` 来存放模板文件，但 JSP 必须放在 `webapp/WEB-INF/jsp/` 目录下。你需要手动创建该目录结构，推荐 `webapp/WEB-INF/jsp/`。
 
-#### 推荐目录结构如下：
+### 推荐目录结构如下：
 
 ```
 src/
@@ -66,7 +64,7 @@ src/
                 └── success.jsp
 ```
 
-#### IDEA 设置项目结构
+### IDEA 设置项目结构
 
 在 IDEA 顶部导航栏，选择 `文件 - 项目结构 - 项目设置 - Facet` 
 
@@ -76,7 +74,7 @@ src/
 
 ![](assets/using-jsp-in-spring-boot/IMG-20250509124834115.png)
 
-### 配置视图解析器（application.yml）
+## 配置视图解析器（application.yml）
 
 在 `application.yml` 中配置 JSP 页面的前缀和后缀路径：
 
@@ -96,7 +94,7 @@ spring:
 return "hello"; // 将映射到 /WEB-INF/jsp/hello.jsp
 ```
 
-### 编写 Controller 示例
+## 编写 Controller 示例
 
 接下来我们写一个简单的控制器来测试 JSP 页面是否正常渲染。
 
@@ -118,7 +116,7 @@ public class JspController {
 }
 ```
 
-### 创建 JSP 页面
+## 创建 JSP 页面
 
 在 `src/main/webapp/WEB-INF/jsp/` 下创建 `hello.jsp` 文件：
 
@@ -136,6 +134,6 @@ public class JspController {
 
 启动项目访问：[http://localhost:8080/hello](http://localhost:8080/hello)，你应该能看到页面成功展示消息。
 
-### 总结
+## 总结
 
 通过以上步骤，我们完成了在 Spring Boot 项目中集成 JSP 的全过程。
