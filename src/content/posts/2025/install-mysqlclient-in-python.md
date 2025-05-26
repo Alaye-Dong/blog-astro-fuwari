@@ -1,7 +1,7 @@
 ---
 title: Python 中安装 mysqlclient
 published: 2025-05-22
-updated: 2025-05-22
+updated: 2025-05-23
 description: ""
 image: ""
 tags:

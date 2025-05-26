@@ -1,7 +1,7 @@
 ---
 title: 在 Springboot 项目中使用 JSP
 published: 2025-05-09
-updated: 2025-05-19
+updated: 2025-05-23
 description: ""
 image: ""
 tags:
@@ -45,6 +45,19 @@ draft: false
 </dependency>
 ```
 
+如果对应的 Tomcat 版本为 10 及以上，则添加：
+
+```xml
+<!-- JSTL 标签库支持 -->
+<dependency>  
+    <groupId>org.glassfish.web</groupId>  
+    <artifactId>jakarta.servlet.jsp.jstl</artifactId>  
+    <version>2.0.0</version>  
+</dependency>
+```
+
+> [!INFO]
+> [查看和指定SpringBoot内嵌Tomcat的版本 - 牧之丨 - 博客园](https://www.cnblogs.com/exmyth/p/15479357.html)
 ## 配置 Web 资源目录与结构
 
 Spring Boot 默认使用 `resources/templates` 来存放模板文件，但 JSP 必须放在 `webapp/WEB-INF/jsp/` 目录下。你需要手动创建该目录结构，推荐 `webapp/WEB-INF/jsp/`。
