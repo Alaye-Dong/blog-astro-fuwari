@@ -1,1 +1,5 @@
-["templater-obsidian", "obsidian-linter", "attachment-management"]
+[
+  "templater-obsidian",
+  "obsidian-linter",
+  "attachment-management"
+]
