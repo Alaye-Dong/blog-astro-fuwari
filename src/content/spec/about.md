@@ -30,6 +30,7 @@ updated: 2025-05-19
 - 2024 年 10 月 获全国三维数字化创新设计大赛江西赛区特等奖
 - 2024 年 11 月 获第十八届 iCAN 大学生创新创业大赛江西赛区三等奖
 - 2024 年 12 月 获第二十三届全国大学生机器人大赛 ROBOTAC 2024 设计赛二等奖
+- 2025 年 5 月 获蓝桥杯全国软件和信息技术专业人才大赛江西赛区 Python 程序设计三等奖
 
 This is a static blog site built with Astro & [Fuwari](https://github.com/saicaca/fuwari).
 
