@@ -13,7 +13,7 @@ var __export = (target, all) => {
 };
 var __copyProps = (to, from, except, desc) => {
 	if ((from && typeof from === "object") || typeof from === "function") {
-		for (let key of __getOwnPropNames(from))
+		for (const key of __getOwnPropNames(from))
 			if (!__hasOwnProp.call(to, key) && key !== except)
 				__defProp(to, key, {
 					get: () => from[key],
@@ -388,8 +388,8 @@ var Md5 = class {
 			if (matches === null) {
 				return;
 			}
-			const lo = parseInt(matches[2], 16);
-			const hi = parseInt(matches[1], 16) || 0;
+			const lo = Number.parseInt(matches[2], 16);
+			const hi = Number.parseInt(matches[1], 16) || 0;
 			buf32[14] = lo;
 			buf32[15] = hi;
 		}
@@ -935,7 +935,7 @@ var SettingTab = class extends import_obsidian3.PluginSettingTab {
 		new import_obsidian3.Setting(containerEl)
 			.setName("Exclude extension pattern")
 			.setDesc(
-				`Regex pattern to exclude certain extensions from being handled.`,
+				"Regex pattern to exclude certain extensions from being handled.",
 			)
 			.addText((text) =>
 				text
@@ -1209,9 +1209,7 @@ var path = {
 	},
 	// return extension without dot, e.g. 'jpg'
 	extname(filepath) {
-		const positions = [...filepath.matchAll(new RegExp("\\.", "gi"))].map(
-			(a) => a.index,
-		);
+		const positions = [...filepath.matchAll(/\./gi)].map((a) => a.index);
 		const idx = positions[positions.length - 1];
 		if (idx === void 0) {
 			return "";
@@ -1244,7 +1242,8 @@ function getOverrideSetting(settings, file, oldPath = "") {
 				overrideSetting.type === "FILE" /* FILE */
 			) {
 				return { settingPath: overridePath, setting: overrideSetting };
-			} else if (
+			}
+			if (
 				filePath.startsWith(overridePath) &&
 				filePath.charAt(overridePath.length) === "/" &&
 				overrideSetting.type === "FOLDER" /* FOLDER */
@@ -1257,7 +1256,8 @@ function getOverrideSetting(settings, file, oldPath = "") {
 				overrideSetting.type === "FOLDER" /* FOLDER */
 			) {
 				return { settingPath: overridePath, setting: overrideSetting };
-			} else if (
+			}
+			if (
 				filePath.startsWith(overridePath) &&
 				filePath.charAt(overridePath.length) === "/" &&
 				overrideSetting.type === "FOLDER" /* FOLDER */
@@ -1306,10 +1306,8 @@ function getRenameOverrideSetting(settings, file, oldPath) {
 	}
 	if (ns.type === "FILE" /* FILE */ && os.type === "FOLDER" /* FOLDER */) {
 		return { settingPath: np, setting: ns };
-	} else if (
-		ns.type === "FOLDER" /* FOLDER */ &&
-		os.type === "FILE" /* FILE */
-	) {
+	}
+	if (ns.type === "FOLDER" /* FOLDER */ && os.type === "FILE" /* FILE */) {
 		return { settingPath: op, setting: os };
 	}
 	if (ns.type === "FOLDER" /* FOLDER */ && os.type === "FOLDER" /* FOLDER */) {
@@ -1317,9 +1315,11 @@ function getRenameOverrideSetting(settings, file, oldPath) {
 		const r = op.split("/").length;
 		if (l > r) {
 			return { settingPath: np, setting: ns };
-		} else if (l < r) {
+		}
+		if (l < r) {
 			return { settingPath: op, setting: os };
-		} else if (l === r) {
+		}
+		if (l === r) {
 			return { settingPath: "", setting: os };
 		}
 	}
@@ -1339,13 +1339,12 @@ function updateOverrideSetting(settings, file, oldPath) {
 		settings.overridePath[file.path] = copySetting;
 		delete settings.overridePath[settingPath];
 		return;
-	} else {
-		const { stripedSrc, stripedDst } = stripPaths(oldPath, file.path);
-		if (stripedSrc === settingPath) {
-			settings.overridePath[stripedDst] = copySetting;
-			delete settings.overridePath[settingPath];
-			return;
-		}
+	}
+	const { stripedSrc, stripedDst } = stripPaths(oldPath, file.path);
+	if (stripedSrc === settingPath) {
+		settings.overridePath[stripedDst] = copySetting;
+		delete settings.overridePath[settingPath];
+		return;
 	}
 }
 function deleteOverrideSetting(settings, file) {
@@ -1494,7 +1493,7 @@ async function deduplicateNewName(newName, file) {
 		}
 		const m = dupNameRegex.exec(sibling);
 		if (!m || m.groups === void 0) continue;
-		dupNameNumbers.push(parseInt(m.groups.number));
+		dupNameNumbers.push(Number.parseInt(m.groups.number));
 	}
 	if (isNewNameExist) {
 		const newNumber =
@@ -1517,11 +1516,11 @@ function getActiveFile(app2) {
 	const view = getActiveView(app2);
 	if (view == null) {
 		return void 0;
-	} else if (view.file == null) {
-		return void 0;
-	} else {
-		return view.file;
 	}
+	if (view.file == null) {
+		return void 0;
+	}
+	return view.file;
 }
 function getActiveView(app2) {
 	return app2.workspace.getActiveViewOfType(import_obsidian6.TextFileView);
@@ -1623,13 +1622,12 @@ var Metadata = class {
 		if (attachFormat.includes(SETTINGS_VARIABLES_ORIGINALNAME)) {
 			if (originalName === "" && linkName != void 0) {
 				return linkName;
-			} else {
-				return attachFormat
-					.replace(`${SETTINGS_VARIABLES_DATES}`, dateTime)
-					.replace(`${SETTINGS_VARIABLES_NOTENAME}`, this.basename)
-					.replace(`${SETTINGS_VARIABLES_ORIGINALNAME}`, originalName)
-					.replace(`${SETTINGS_VARIABLES_MD5}`, md5);
 			}
+			return attachFormat
+				.replace(`${SETTINGS_VARIABLES_DATES}`, dateTime)
+				.replace(`${SETTINGS_VARIABLES_NOTENAME}`, this.basename)
+				.replace(`${SETTINGS_VARIABLES_ORIGINALNAME}`, originalName)
+				.replace(`${SETTINGS_VARIABLES_MD5}`, md5);
 		}
 		return attachFormat
 			.replace(`${SETTINGS_VARIABLES_DATES}`, dateTime)
@@ -1704,10 +1702,9 @@ function isExcluded(path2, settings) {
 		if (settings.excludeSubpaths && path2.startsWith(excludedPath)) {
 			debugLog("isExcluded: ", path2);
 			return true;
-		} else {
-			if (path2 === excludedPath) {
-				return true;
-			}
+		}
+		if (path2 === excludedPath) {
+			return true;
 		}
 	}
 	return false;
@@ -1747,7 +1744,8 @@ function loadOriginalName(settings, setting, ext, md5) {
 		}
 		if (first.md5 === last.md5 && first.n === last.n) {
 			return last;
-		} else if (first.md5 === last.md5 && first.n !== last.n) {
+		}
+		if (first.md5 === last.md5 && first.n !== last.n) {
 			settings.originalNameStorage.remove(first);
 			return last;
 		}
@@ -2089,23 +2087,22 @@ var ArrangeHandler = class {
 		}
 		if (attachPath !== linkPath) {
 			return true;
-		} else {
-			if (
-				settings.attachFormat.includes(SETTINGS_VARIABLES_NOTENAME) &&
-				!linkName.includes(noteName)
-			) {
-				return true;
-			}
-			const noNoteNameAttachFormat = settings.attachFormat.split(
-				SETTINGS_VARIABLES_NOTENAME,
-			);
-			if (settings.attachFormat.includes(SETTINGS_VARIABLES_DATES)) {
-				for (const formatPart in noNoteNameAttachFormat) {
-					const splited = formatPart.split(SETTINGS_VARIABLES_DATES);
-					for (const part in splited) {
-						if (!linkName.includes(part)) {
-							return true;
-						}
+		}
+		if (
+			settings.attachFormat.includes(SETTINGS_VARIABLES_NOTENAME) &&
+			!linkName.includes(noteName)
+		) {
+			return true;
+		}
+		const noNoteNameAttachFormat = settings.attachFormat.split(
+			SETTINGS_VARIABLES_NOTENAME,
+		);
+		if (settings.attachFormat.includes(SETTINGS_VARIABLES_DATES)) {
+			for (const formatPart in noNoteNameAttachFormat) {
+				const splited = formatPart.split(SETTINGS_VARIABLES_DATES);
+				for (const part in splited) {
+					if (!linkName.includes(part)) {
+						return true;
 					}
 				}
 			}

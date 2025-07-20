@@ -16,7 +16,7 @@ var Ki = (r, e) => {
 	},
 	Ui = (r, e, t) => {
 		if ((e && typeof e == "object") || typeof e == "function")
-			for (let n of Gi(e))
+			for (const n of Gi(e))
 				!Wi.call(r, n) &&
 					n !== "default" &&
 					or(r, n, {
@@ -67,7 +67,7 @@ var vr = V(require("obsidian"));
 var M = V(require("obsidian"));
 var Pn = V(require("obsidian"));
 function K(r) {
-	let e = new Pn.Notice("", 8e3);
+	const e = new Pn.Notice("", 8e3);
 	r instanceof w && r.console_msg
 		? ((e.noticeEl.innerHTML = `<b>Templater Error</b>:<br/>${r.message}<br/>Check console for more information`),
 			console.error(
@@ -114,20 +114,20 @@ function qn() {
 }
 function zi(r, e) {
 	e = (0, Ce.normalizePath)(e);
-	let t = r.vault.getAbstractFileByPath(e);
+	const t = r.vault.getAbstractFileByPath(e);
 	if (!t) throw new w(`Folder "${e}" doesn't exist`);
 	if (!(t instanceof Ce.TFolder)) throw new w(`${e} is a file, not a folder`);
 	return t;
 }
 function lt(r, e) {
 	e = (0, Ce.normalizePath)(e);
-	let t = r.vault.getAbstractFileByPath(e);
+	const t = r.vault.getAbstractFileByPath(e);
 	if (!t) throw new w(`File "${e}" doesn't exist`);
 	if (!(t instanceof Ce.TFile)) throw new w(`${e} is a folder, not a file`);
 	return t;
 }
 function Ie(r, e) {
-	let t = zi(r, e),
+	const t = zi(r, e),
 		n = [];
 	return (
 		Ce.Vault.recurseChildren(t, (o) => {
@@ -139,21 +139,21 @@ function Ie(r, e) {
 }
 function pt(r, e, t) {
 	if (t < 0 || t === r.length) return;
-	let n = r[e];
+	const n = r[e];
 	(r[e] = r[t]), (r[t] = n);
 }
 function xt(r) {
 	return r.workspace.activeEditor?.file ?? r.workspace.getActiveFile();
 }
 function On(r) {
-	let e = r.lastIndexOf("/");
+	const e = r.lastIndexOf("/");
 	return e !== -1 ? r.slice(0, e) : "";
 }
 function kr(r) {
 	return r !== null && typeof r == "object";
 }
 function Cn(r) {
-	let e = r.toString(),
+	const e = r.toString(),
 		t = e.indexOf("(");
 	return e
 		.substring(t + 1, e.indexOf(")"))
@@ -174,12 +174,10 @@ var W = "top",
 	lr = "viewport",
 	Et = "popper",
 	Sn = "reference",
-	Tr = et.reduce(function (r, e) {
-		return r.concat([e + "-" + We, e + "-" + ct]);
-	}, []),
-	pr = [].concat(et, [ar]).reduce(function (r, e) {
-		return r.concat([e, e + "-" + We, e + "-" + ct]);
-	}, []),
+	Tr = et.reduce((r, e) => r.concat([e + "-" + We, e + "-" + ct]), []),
+	pr = []
+		.concat(et, [ar])
+		.reduce((r, e) => r.concat([e, e + "-" + We, e + "-" + ct]), []),
 	Ji = "beforeRead",
 	Xi = "read",
 	Qi = "afterRead",
@@ -216,14 +214,14 @@ function kt(r) {
 }
 function oo(r) {
 	var e = r.state;
-	Object.keys(e.elements).forEach(function (t) {
+	Object.keys(e.elements).forEach((t) => {
 		var n = e.styles[t] || {},
 			o = e.attributes[t] || {},
 			s = e.elements[t];
 		!te(s) ||
 			!re(s) ||
 			(Object.assign(s.style, n),
-			Object.keys(o).forEach(function (a) {
+			Object.keys(o).forEach((a) => {
 				var A = o[a];
 				A === !1 ? s.removeAttribute(a) : s.setAttribute(a, A === !0 ? "" : A);
 			}));
@@ -245,18 +243,16 @@ function so(r) {
 		Object.assign(e.elements.popper.style, t.popper),
 		(e.styles = t),
 		e.elements.arrow && Object.assign(e.elements.arrow.style, t.arrow),
-		function () {
-			Object.keys(e.elements).forEach(function (n) {
+		() => {
+			Object.keys(e.elements).forEach((n) => {
 				var o = e.elements[n],
 					s = e.attributes[n] || {},
-					a = Object.keys(e.styles.hasOwnProperty(n) ? e.styles[n] : t[n]),
-					A = a.reduce(function (c, d) {
-						return (c[d] = ""), c;
-					}, {});
+					a = Object.keys(Object.hasOwn(e.styles, n) ? e.styles[n] : t[n]),
+					A = a.reduce((c, d) => ((c[d] = ""), c), {});
 				!te(o) ||
 					!re(o) ||
 					(Object.assign(o.style, A),
-					Object.keys(s).forEach(function (c) {
+					Object.keys(s).forEach((c) => {
 						o.removeAttribute(c);
 					}));
 			});
@@ -280,11 +276,7 @@ var xe = Math.max,
 function Tt() {
 	var r = navigator.userAgentData;
 	return r != null && r.brands && Array.isArray(r.brands)
-		? r.brands
-				.map(function (e) {
-					return e.brand + "/" + e.version;
-				})
-				.join(" ")
+		? r.brands.map((e) => e.brand + "/" + e.version).join(" ")
 		: navigator.userAgent;
 }
 function Dt() {
@@ -405,19 +397,15 @@ function Rt(r) {
 	return Object.assign({}, Nt(), r);
 }
 function Lt(r, e) {
-	return e.reduce(function (t, n) {
-		return (t[n] = r), t;
-	}, {});
+	return e.reduce((t, n) => ((t[n] = r), t), {});
 }
-var lo = function (e, t) {
-	return (
-		(e =
-			typeof e == "function"
-				? e(Object.assign({}, t.rects, { placement: t.placement }))
-				: e),
-		Rt(typeof e != "number" ? e : Lt(e, et))
-	);
-};
+var lo = (e, t) => (
+	(e =
+		typeof e == "function"
+			? e(Object.assign({}, t.rects, { placement: t.placement }))
+			: e),
+	Rt(typeof e != "number" ? e : Lt(e, et))
+);
 function po(r) {
 	var e,
 		t = r.state,
@@ -495,8 +483,8 @@ function Yn(r) {
 		P = O === void 0 ? 0 : O,
 		j = typeof f == "function" ? f({ x, y: P }) : { x, y: P };
 	(x = j.x), (P = j.y);
-	var B = a.hasOwnProperty("x"),
-		Y = a.hasOwnProperty("y"),
+	var B = Object.hasOwn(a, "x"),
+		Y = Object.hasOwn(a, "y"),
 		N = U,
 		T = W,
 		I = window;
@@ -617,13 +605,13 @@ function fo(r) {
 		d = [].concat(e.scrollParents.reference, e.scrollParents.popper);
 	return (
 		s &&
-			d.forEach(function (f) {
+			d.forEach((f) => {
 				f.addEventListener("scroll", t.update, cr);
 			}),
 		A && c.addEventListener("resize", t.update, cr),
-		function () {
+		() => {
 			s &&
-				d.forEach(function (f) {
+				d.forEach((f) => {
 					f.removeEventListener("scroll", t.update, cr);
 				}),
 				A && c.removeEventListener("resize", t.update, cr);
@@ -634,21 +622,17 @@ var Gn = {
 	name: "eventListeners",
 	enabled: !0,
 	phase: "write",
-	fn: function () {},
+	fn: () => {},
 	effect: fo,
 	data: {},
 };
 var go = { left: "right", right: "left", bottom: "top", top: "bottom" };
 function Ft(r) {
-	return r.replace(/left|right|bottom|top/g, function (e) {
-		return go[e];
-	});
+	return r.replace(/left|right|bottom|top/g, (e) => go[e]);
 }
 var ho = { start: "end", end: "start" };
 function Ar(r) {
-	return r.replace(/start|end/g, function (e) {
-		return ho[e];
-	});
+	return r.replace(/start|end/g, (e) => ho[e]);
 }
 function dt(r) {
 	var e = L(r),
@@ -752,18 +736,14 @@ function _o(r) {
 	var e = tt(Ue(r)),
 		t = ["absolute", "fixed"].indexOf(Ae(r).position) >= 0,
 		n = t && te(r) ? Ee(r) : r;
-	return he(n)
-		? e.filter(function (o) {
-				return he(o) && $t(o, n) && re(o) !== "body";
-			})
-		: [];
+	return he(n) ? e.filter((o) => he(o) && $t(o, n) && re(o) !== "body") : [];
 }
 function Br(r, e, t, n) {
 	var o = e === "clippingParents" ? _o(r) : [].concat(e),
 		s = [].concat(o, [t]),
 		a = s[0],
 		A = s.reduce(
-			function (c, d) {
+			(c, d) => {
 				var f = Vn(r, d, n);
 				return (
 					(c.top = xe(f.top, c.top)),
@@ -858,7 +838,7 @@ function ke(r, e) {
 		m = r.modifiersData.offset;
 	if (k === Et && m) {
 		var h = m[o];
-		Object.keys(G).forEach(function (p) {
+		Object.keys(G).forEach((p) => {
 			var we = [Q, ee].indexOf(p) >= 0 ? 1 : -1,
 				me = [W, ee].indexOf(p) >= 0 ? "y" : "x";
 			G[p] += h[me] * we;
@@ -877,28 +857,19 @@ function qr(r, e) {
 		c = t.allowedAutoPlacements,
 		d = c === void 0 ? pr : c,
 		f = _e(n),
-		b = f
-			? A
-				? Tr
-				: Tr.filter(function (O) {
-						return _e(O) === f;
-					})
-			: et,
-		k = b.filter(function (O) {
-			return d.indexOf(O) >= 0;
-		});
+		b = f ? (A ? Tr : Tr.filter((O) => _e(O) === f)) : et,
+		k = b.filter((O) => d.indexOf(O) >= 0);
 	k.length === 0 && (k = b);
-	var x = k.reduce(function (O, P) {
-		return (
+	var x = k.reduce(
+		(O, P) => (
 			(O[P] = ke(r, { placement: P, boundary: o, rootBoundary: s, padding: a })[
 				ne(P)
 			]),
 			O
-		);
-	}, {});
-	return Object.keys(x).sort(function (O, P) {
-		return x[O] - x[P];
-	});
+		),
+		{},
+	);
+	return Object.keys(x).sort((O, P) => x[O] - x[P]);
 }
 function vo(r) {
 	if (ne(r) === ar) return [];
@@ -927,20 +898,22 @@ function wo(r) {
 				B = ne(j),
 				Y = B === j,
 				N = c || (Y || !O ? [Ft(j)] : vo(j)),
-				T = [j].concat(N).reduce(function (y, _) {
-					return y.concat(
-						ne(_) === ar
-							? qr(e, {
-									placement: _,
-									boundary: f,
-									rootBoundary: b,
-									padding: d,
-									flipVariations: O,
-									allowedAutoPlacements: P,
-								})
-							: _,
-					);
-				}, []),
+				T = [j].concat(N).reduce(
+					(y, _) =>
+						y.concat(
+							ne(_) === ar
+								? qr(e, {
+										placement: _,
+										boundary: f,
+										rootBoundary: b,
+										padding: d,
+										flipVariations: O,
+										allowedAutoPlacements: P,
+									})
+								: _,
+						),
+					[],
+				),
 				I = e.rects.reference,
 				C = e.rects.popper,
 				R = new Map(),
@@ -969,9 +942,7 @@ function wo(r) {
 			if (
 				(s && fe.push(oe[h] <= 0),
 				A && fe.push(oe[se] <= 0, oe[Pe] <= 0),
-				fe.every(function (y) {
-					return y;
-				}))
+				fe.every((y) => y))
 			) {
 				(J = m), (z = !1);
 				break;
@@ -981,13 +952,10 @@ function wo(r) {
 		if (z)
 			for (
 				var _t = O ? 3 : 1,
-					Be = function (_) {
-						var F = T.find(function (H) {
+					Be = (_) => {
+						var F = T.find((H) => {
 							var Re = R.get(H);
-							if (Re)
-								return Re.slice(0, _).every(function (S) {
-									return S;
-								});
+							if (Re) return Re.slice(0, _).every((S) => S);
 						});
 						if (F) return (J = F), "break";
 					},
@@ -1022,9 +990,7 @@ function Kn(r, e, t) {
 	);
 }
 function Un(r) {
-	return [W, Q, ee, U].some(function (e) {
-		return r[e] >= 0;
-	});
+	return [W, Q, ee, U].some((e) => r[e] >= 0);
 }
 function bo(r) {
 	var e = r.state,
@@ -1074,9 +1040,7 @@ function xo(r) {
 		n = r.name,
 		o = t.offset,
 		s = o === void 0 ? [0, 0] : o,
-		a = pr.reduce(function (f, b) {
-			return (f[b] = yo(b, e.rects, s)), f;
-		}, {}),
+		a = pr.reduce((f, b) => ((f[b] = yo(b, e.rects, s)), f), {}),
 		A = a[e.placement],
 		c = A.x,
 		d = A.y;
@@ -1147,7 +1111,7 @@ function ko(r) {
 				: Object.assign({ mainAxis: 0, altAxis: 0 }, J),
 		m = e.modifiersData.offset ? e.modifiersData.offset[e.placement] : null,
 		h = { x: 0, y: 0 };
-	if (!!C) {
+	if (C) {
 		if (s) {
 			var p,
 				we = T === "y" ? W : U,
@@ -1242,13 +1206,13 @@ function Fo(r) {
 	var e = new Map(),
 		t = new Set(),
 		n = [];
-	r.forEach(function (s) {
+	r.forEach((s) => {
 		e.set(s.name, s);
 	});
 	function o(s) {
 		t.add(s.name);
 		var a = [].concat(s.requires || [], s.requiresIfExists || []);
-		a.forEach(function (A) {
+		a.forEach((A) => {
 			if (!t.has(A)) {
 				var c = e.get(A);
 				c && o(c);
@@ -1257,7 +1221,7 @@ function Fo(r) {
 			n.push(s);
 	}
 	return (
-		r.forEach(function (s) {
+		r.forEach((s) => {
 			t.has(s.name) || o(s);
 		}),
 		n
@@ -1265,30 +1229,22 @@ function Fo(r) {
 }
 function Dr(r) {
 	var e = Fo(r);
-	return Dn.reduce(function (t, n) {
-		return t.concat(
-			e.filter(function (o) {
-				return o.phase === n;
-			}),
-		);
-	}, []);
+	return Dn.reduce((t, n) => t.concat(e.filter((o) => o.phase === n)), []);
 }
 function $r(r) {
 	var e;
-	return function () {
-		return (
-			e ||
-				(e = new Promise(function (t) {
-					Promise.resolve().then(function () {
-						(e = void 0), t(r());
-					});
-				})),
-			e
-		);
-	};
+	return () => (
+		e ||
+			(e = new Promise((t) => {
+				Promise.resolve().then(() => {
+					(e = void 0), t(r());
+				});
+			})),
+		e
+	);
 }
 function Nr(r) {
-	var e = r.reduce(function (t, n) {
+	var e = r.reduce((t, n) => {
 		var o = t[n.name];
 		return (
 			(t[n.name] = o
@@ -1300,17 +1256,13 @@ function Nr(r) {
 			t
 		);
 	}, {});
-	return Object.keys(e).map(function (t) {
-		return e[t];
-	});
+	return Object.keys(e).map((t) => e[t]);
 }
 var Zn = { placement: "bottom", modifiers: [], strategy: "absolute" };
 function ei() {
 	for (var r = arguments.length, e = new Array(r), t = 0; t < r; t++)
 		e[t] = arguments[t];
-	return !e.some(function (n) {
-		return !(n && typeof n.getBoundingClientRect == "function");
-	});
+	return !e.some((n) => !(n && typeof n.getBoundingClientRect == "function"));
 }
 function ti(r) {
 	r === void 0 && (r = {});
@@ -1319,7 +1271,7 @@ function ti(r) {
 		n = t === void 0 ? [] : t,
 		o = e.defaultOptions,
 		s = o === void 0 ? Zn : o;
-	return function (A, c, d) {
+	return (A, c, d) => {
 		d === void 0 && (d = s);
 		var f = {
 				placement: "bottom",
@@ -1334,7 +1286,7 @@ function ti(r) {
 			k = !1,
 			x = {
 				state: f,
-				setOptions: function (B) {
+				setOptions: (B) => {
 					var Y = typeof B == "function" ? B(f.options) : B;
 					P(),
 						(f.options = Object.assign({}, s, f.options, Y)),
@@ -1348,28 +1300,24 @@ function ti(r) {
 						});
 					var N = Dr(Nr([].concat(n, f.options.modifiers)));
 					return (
-						(f.orderedModifiers = N.filter(function (T) {
-							return T.enabled;
-						})),
-						O(),
-						x.update()
+						(f.orderedModifiers = N.filter((T) => T.enabled)), O(), x.update()
 					);
 				},
-				forceUpdate: function () {
+				forceUpdate: () => {
 					if (!k) {
 						var B = f.elements,
 							Y = B.reference,
 							N = B.popper;
-						if (!!ei(Y, N)) {
+						if (ei(Y, N)) {
 							(f.rects = {
 								reference: Sr(Y, Ee(N), f.options.strategy === "fixed"),
 								popper: ut(N),
 							}),
 								(f.reset = !1),
 								(f.placement = f.options.placement),
-								f.orderedModifiers.forEach(function (G) {
-									return (f.modifiersData[G.name] = Object.assign({}, G.data));
-								});
+								f.orderedModifiers.forEach(
+									(G) => (f.modifiersData[G.name] = Object.assign({}, G.data)),
+								);
 							for (var T = 0; T < f.orderedModifiers.length; T++) {
 								if (f.reset === !0) {
 									(f.reset = !1), (T = -1);
@@ -1386,37 +1334,35 @@ function ti(r) {
 						}
 					}
 				},
-				update: $r(function () {
-					return new Promise(function (j) {
-						x.forceUpdate(), j(f);
-					});
-				}),
-				destroy: function () {
+				update: $r(
+					() =>
+						new Promise((j) => {
+							x.forceUpdate(), j(f);
+						}),
+				),
+				destroy: () => {
 					P(), (k = !0);
 				},
 			};
 		if (!ei(A, c)) return x;
-		x.setOptions(d).then(function (j) {
+		x.setOptions(d).then((j) => {
 			!k && d.onFirstUpdate && d.onFirstUpdate(j);
 		});
 		function O() {
-			f.orderedModifiers.forEach(function (j) {
+			f.orderedModifiers.forEach((j) => {
 				var B = j.name,
 					Y = j.options,
 					N = Y === void 0 ? {} : Y,
 					T = j.effect;
 				if (typeof T == "function") {
 					var I = T({ state: f, name: B, instance: x, options: N }),
-						C = function () {};
+						C = () => {};
 					b.push(I || C);
 				}
 			});
 		}
 		function P() {
-			b.forEach(function (j) {
-				return j();
-			}),
-				(b = []);
+			b.forEach((j) => j()), (b = []);
 		}
 		return x;
 	};
@@ -1448,18 +1394,18 @@ var Po = (r, e) => ((r % e) + e) % e,
 		}
 		onSuggestionClick(e, t) {
 			e.preventDefault();
-			let n = this.suggestions.indexOf(t);
+			const n = this.suggestions.indexOf(t);
 			this.setSelectedItem(n, !1), this.useSelectedItem(e);
 		}
 		onSuggestionMouseover(e, t) {
-			let n = this.suggestions.indexOf(t);
+			const n = this.suggestions.indexOf(t);
 			this.setSelectedItem(n, !1);
 		}
 		setSuggestions(e) {
 			this.containerEl.empty();
-			let t = [];
+			const t = [];
 			e.forEach((n) => {
-				let o = this.containerEl.createDiv("suggestion-item");
+				const o = this.containerEl.createDiv("suggestion-item");
 				this.owner.renderSuggestion(n, o), t.push(o);
 			}),
 				(this.values = e),
@@ -1467,11 +1413,11 @@ var Po = (r, e) => ((r % e) + e) % e,
 				this.setSelectedItem(0, !1);
 		}
 		useSelectedItem(e) {
-			let t = this.values[this.selectedItem];
+			const t = this.values[this.selectedItem];
 			t && this.owner.selectSuggestion(t, e);
 		}
 		setSelectedItem(e, t) {
-			let n = Po(e, this.suggestions.length),
+			const n = Po(e, this.suggestions.length),
 				o = this.suggestions[this.selectedItem],
 				s = this.suggestions[n];
 			o?.removeClass("is-selected"),
@@ -1486,7 +1432,7 @@ var Po = (r, e) => ((r % e) + e) % e,
 				(this.inputEl = t),
 				(this.scope = new ri.Scope()),
 				(this.suggestEl = createDiv("suggestion-container"));
-			let n = this.suggestEl.createDiv("suggestion");
+			const n = this.suggestEl.createDiv("suggestion");
 			(this.suggest = new ni(this, n, this.scope)),
 				this.scope.register([], "Escape", this.close.bind(this)),
 				this.inputEl.addEventListener("input", this.onInputChanged.bind(this)),
@@ -1497,7 +1443,7 @@ var Po = (r, e) => ((r % e) + e) % e,
 				});
 		}
 		onInputChanged() {
-			let e = this.inputEl.value,
+			const e = this.inputEl.value,
 				t = this.getSuggestions(e);
 			if (!t) {
 				this.close();
@@ -1518,7 +1464,7 @@ var Po = (r, e) => ((r % e) + e) % e,
 							name: "sameWidth",
 							enabled: !0,
 							fn: ({ state: n, instance: o }) => {
-								let s = `${n.rects.reference.width}px`;
+								const s = `${n.rects.reference.width}px`;
 								n.styles.popper.width !== s &&
 									((n.styles.popper.width = s), o.update());
 							},
@@ -1536,7 +1482,7 @@ var Po = (r, e) => ((r % e) + e) % e,
 		}
 	};
 var Te;
-(function (t) {
+((t) => {
 	(t[(t.TemplateFiles = 0)] = "TemplateFiles"),
 		(t[(t.ScriptFiles = 1)] = "ScriptFiles");
 })(Te || (Te = {}));
@@ -1564,12 +1510,12 @@ var Pt = class extends Ht {
 		}
 	}
 	getSuggestions(e) {
-		let t = ce(
+		const t = ce(
 			() => Ie(this.plugin.app, this.get_folder(this.mode)),
 			this.get_error_msg(this.mode),
 		);
 		if (!t) return [];
-		let n = [],
+		const n = [],
 			o = e.toLowerCase();
 		return (
 			t.forEach((s) => {
@@ -1594,7 +1540,7 @@ var Gt = class extends Ht {
 		super(e, t);
 	}
 	getSuggestions(e) {
-		let t = this.app.vault.getAllLoadedFiles(),
+		const t = this.app.vault.getAllLoadedFiles(),
 			n = [],
 			o = e.toLowerCase();
 		return (
@@ -1669,7 +1615,7 @@ var si = {
 				});
 		}
 		add_internal_functions_setting() {
-			let e = document.createDocumentFragment();
+			const e = document.createDocumentFragment();
 			e.append(
 				"Templater provides multiples predefined variables / functions that you can use.",
 				e.createEl("br"),
@@ -1685,9 +1631,9 @@ var si = {
 					.setDesc(e);
 		}
 		add_syntax_highlighting_settings() {
-			let e = document.createDocumentFragment();
+			const e = document.createDocumentFragment();
 			e.append("Adds syntax highlighting for Templater commands in edit mode.");
-			let t = document.createDocumentFragment();
+			const t = document.createDocumentFragment();
 			t.append(
 				"Adds syntax highlighting for Templater commands in edit mode on mobile. Use with caution: this may break live preview on mobile platforms.",
 			),
@@ -1717,7 +1663,7 @@ var si = {
 					});
 		}
 		add_auto_jump_to_cursor() {
-			let e = document.createDocumentFragment();
+			const e = document.createDocumentFragment();
 			e.append(
 				"Automatically triggers ",
 				e.createEl("code", { text: "tp.file.cursor" }),
@@ -1740,7 +1686,7 @@ var si = {
 					});
 		}
 		add_trigger_on_new_file_creation_setting() {
-			let e = document.createDocumentFragment();
+			const e = document.createDocumentFragment();
 			e.append(
 				"Templater will listen for the new file creation event, and, if it matches a rule you've set, replace every command it finds in the new file's content. ",
 				"This makes Templater compatible with other plugins like the Daily note core plugin, Calendar plugin, Review plugin, Note refactor plugin, etc. ",
@@ -1768,7 +1714,7 @@ var si = {
 		}
 		add_templates_hotkeys_setting() {
 			new M.Setting(this.containerEl).setName("Template hotkeys").setHeading();
-			let e = document.createDocumentFragment();
+			const e = document.createDocumentFragment();
 			e.append("Template hotkeys allows you to bind a template to a hotkey."),
 				new M.Setting(this.containerEl).setDesc(e),
 				this.plugin.settings.enabled_templates_hotkeys.forEach((t, n) => {
@@ -1800,7 +1746,7 @@ var si = {
 								.setTooltip("Configure Hotkey")
 								.onClick(() => {
 									this.app.setting.openTabById("hotkeys");
-									let a = this.app.setting.activeTab;
+									const a = this.app.setting.activeTab;
 									(a.searchComponent.inputEl.value = t),
 										a.updateHotkeyVisibility();
 								});
@@ -1849,7 +1795,7 @@ var si = {
 		}
 		add_folder_templates_setting() {
 			new M.Setting(this.containerEl).setName("Folder templates").setHeading();
-			let e = document.createDocumentFragment();
+			const e = document.createDocumentFragment();
 			e.append(
 				"Folder templates are triggered when a new ",
 				e.createEl("strong", { text: "empty " }),
@@ -1862,7 +1808,7 @@ var si = {
 				".",
 			),
 				new M.Setting(this.containerEl).setDesc(e);
-			let t = document.createDocumentFragment();
+			const t = document.createDocumentFragment();
 			t.append(
 				"When enabled, Templater will make use of the folder templates defined below. This option is mutually exclusive with file regex templates below, so enabling one will disable the other.",
 			),
@@ -1964,7 +1910,7 @@ var si = {
 			new M.Setting(this.containerEl)
 				.setName("File regex templates")
 				.setHeading();
-			let e = document.createDocumentFragment();
+			const e = document.createDocumentFragment();
 			e.append(
 				"File regex templates are triggered when a new ",
 				e.createEl("strong", { text: "empty" }),
@@ -1977,7 +1923,7 @@ var si = {
 				" as a final catch-all, if you need it.",
 			),
 				new M.Setting(this.containerEl).setDesc(e);
-			let t = document.createDocumentFragment();
+			const t = document.createDocumentFragment();
 			t.append(
 				"When enabled, Templater will make use of the file regex templates defined below. This option is mutually exclusive with folder templates above, so enabling one will disable the other.",
 			),
@@ -2063,7 +2009,7 @@ var si = {
 		}
 		add_startup_templates_setting() {
 			new M.Setting(this.containerEl).setName("Startup templates").setHeading();
-			let e = document.createDocumentFragment();
+			const e = document.createDocumentFragment();
 			e.append(
 				"Startup templates are templates that will get executed once when Templater starts.",
 				e.createEl("br"),
@@ -2149,14 +2095,14 @@ var si = {
 			if (!this.plugin.settings.user_scripts_folder)
 				t = "No user scripts folder set";
 			else {
-				let n = ce(
+				const n = ce(
 					() => Ie(this.app, this.plugin.settings.user_scripts_folder),
 					"User scripts folder doesn't exist",
 				);
 				if (!n || n.length === 0) t = "No user scripts detected";
 				else {
 					let o = 0;
-					for (let s of n)
+					for (const s of n)
 						s.extension === "js" &&
 							(o++,
 							e.append(e.createEl("li", { text: `tp.user.${s.basename}` })));
@@ -2207,7 +2153,7 @@ var si = {
 						s.setPlaceholder("Timeout")
 							.setValue(this.plugin.settings.command_timeout.toString())
 							.onChange((a) => {
-								let A = Number(a);
+								const A = Number(a);
 								if (isNaN(A)) {
 									K(new w("Timeout must be a number"));
 									return;
@@ -2237,9 +2183,9 @@ var si = {
 						});
 				let t = 1;
 				this.plugin.settings.templates_pairs.forEach((s) => {
-					let a = this.containerEl.createEl("div");
+					const a = this.containerEl.createEl("div");
 					a.addClass("templater_div");
-					let A = this.containerEl.createEl("h4", {
+					const A = this.containerEl.createEl("h4", {
 						text: "User function n\xB0" + t,
 					});
 					A.addClass("templater_title"),
@@ -2248,7 +2194,7 @@ var si = {
 								d.setIcon("cross")
 									.setTooltip("Delete")
 									.onClick(() => {
-										let f = this.plugin.settings.templates_pairs.indexOf(s);
+										const f = this.plugin.settings.templates_pairs.indexOf(s);
 										f > -1 &&
 											(this.plugin.settings.templates_pairs.splice(f, 1),
 											this.plugin.save_settings(),
@@ -2256,11 +2202,11 @@ var si = {
 									});
 							})
 							.addText((d) => {
-								let f = d
+								const f = d
 									.setPlaceholder("Function name")
 									.setValue(s[0])
 									.onChange((b) => {
-										let k = this.plugin.settings.templates_pairs.indexOf(s);
+										const k = this.plugin.settings.templates_pairs.indexOf(s);
 										k > -1 &&
 											((this.plugin.settings.templates_pairs[k][0] = b),
 											this.plugin.save_settings());
@@ -2268,11 +2214,11 @@ var si = {
 								return f.inputEl.addClass("templater_template"), f;
 							})
 							.addTextArea((d) => {
-								let f = d
+								const f = d
 									.setPlaceholder("System command")
 									.setValue(s[1])
 									.onChange((b) => {
-										let k = this.plugin.settings.templates_pairs.indexOf(s);
+										const k = this.plugin.settings.templates_pairs.indexOf(s);
 										k > -1 &&
 											((this.plugin.settings.templates_pairs[k][1] = b),
 											this.plugin.save_settings());
@@ -2288,7 +2234,7 @@ var si = {
 						a.appendChild(this.containerEl.lastChild),
 						(t += 1);
 				});
-				let n = this.containerEl.createEl("div");
+				const n = this.containerEl.createEl("div");
 				n.addClass("templater_div2"),
 					new M.Setting(this.containerEl)
 						.addButton((s) => {
@@ -2305,7 +2251,7 @@ var si = {
 			}
 		}
 		add_donating_setting() {
-			let e = new M.Setting(this.containerEl)
+			const e = new M.Setting(this.containerEl)
 					.setName("Donate")
 					.setDesc(
 						"If you like this Plugin, consider donating to support continued development.",
@@ -2313,17 +2259,17 @@ var si = {
 				t = document.createElement("a");
 			t.setAttribute("href", "https://github.com/sponsors/silentvoid13"),
 				t.addClass("templater_donating");
-			let n = document.createElement("img");
+			const n = document.createElement("img");
 			(n.src =
 				"https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86"),
 				t.appendChild(n);
-			let o = document.createElement("a");
+			const o = document.createElement("a");
 			o.setAttribute(
 				"href",
 				"https://www.paypal.com/donate?hosted_button_id=U2SRGAFYXT32Q",
 			),
 				o.addClass("templater_donating");
-			let s = document.createElement("img");
+			const s = document.createElement("img");
 			(s.src =
 				"https://img.shields.io/badge/paypal-silentvoid13-yellow?style=social&logo=paypal"),
 				o.appendChild(s),
@@ -2333,7 +2279,7 @@ var si = {
 	};
 var mr = V(require("obsidian"));
 var Bt;
-(function (t) {
+((t) => {
 	(t[(t.InsertTemplate = 0)] = "InsertTemplate"),
 		(t[(t.CreateNoteTemplate = 1)] = "CreateNoteTemplate");
 })(Bt || (Bt = {}));
@@ -2345,7 +2291,7 @@ var Yr = class extends mr.FuzzySuggestModal {
 	getItems() {
 		if (!this.plugin.settings.templates_folder)
 			return this.app.vault.getMarkdownFiles();
-		let e = ce(
+		const e = ce(
 			() => Ie(this.plugin.app, this.plugin.settings.templates_folder),
 			`Couldn't retrieve template files from templates folder ${this.plugin.settings.templates_folder}`,
 		);
@@ -2465,7 +2411,7 @@ var pi = 10,
 			this.name = "file";
 			this.include_depth = 0;
 			this.create_new_depth = 0;
-			this.linkpath_regex = new RegExp("^\\[\\[(.*)\\]\\]$");
+			this.linkpath_regex = /^\[\[(.*)\]\]$/;
 		}
 		async create_static_templates() {
 			this.static_functions.set("creation_date", this.generate_creation_date()),
@@ -2504,7 +2450,7 @@ var pi = 10,
 						((this.create_new_depth = 0),
 						new w("Reached create_new depth limit (max = 10)"))
 					);
-				let s = await this.plugin.templater.create_new_note_from_template(
+				const s = await this.plugin.templater.create_new_note_from_template(
 					e,
 					o,
 					t,
@@ -2522,7 +2468,7 @@ var pi = 10,
 		}
 		generate_cursor_append() {
 			return (e) => {
-				let t = this.plugin.app.workspace.activeEditor;
+				const t = this.plugin.app.workspace.activeEditor;
 				if (!t || !t.editor) {
 					K(new w("No active editor, can't append to cursor."));
 					return;
@@ -2532,13 +2478,13 @@ var pi = 10,
 		}
 		generate_exists() {
 			return async (e) => {
-				let t = (0, Z.normalizePath)(e);
+				const t = (0, Z.normalizePath)(e);
 				return await this.plugin.app.vault.exists(t);
 			};
 		}
 		generate_find_tfile() {
 			return (e) => {
-				let t = (0, Z.normalizePath)(e);
+				const t = (0, Z.normalizePath)(e);
 				return this.plugin.app.metadataCache.getFirstLinkpathDest(t, "");
 			};
 		}
@@ -2567,20 +2513,20 @@ var pi = 10,
 								"Invalid file format, provide an obsidian link between quotes.",
 							))
 						);
-					let { path: o, subpath: s } = (0, Z.parseLinktext)(n[1]),
+					const { path: o, subpath: s } = (0, Z.parseLinktext)(n[1]),
 						a = this.plugin.app.metadataCache.getFirstLinkpathDest(o, "");
 					if (!a)
 						throw ((this.include_depth -= 1), new w(`File ${e} doesn't exist`));
 					if (((t = await this.plugin.app.vault.read(a)), s)) {
-						let A = this.plugin.app.metadataCache.getFileCache(a);
+						const A = this.plugin.app.metadataCache.getFileCache(a);
 						if (A) {
-							let c = (0, Z.resolveSubpath)(A, s);
+							const c = (0, Z.resolveSubpath)(A, s);
 							c && (t = t.slice(c.start.offset, c.end?.offset));
 						}
 					}
 				}
 				try {
-					let n = await this.plugin.templater.parser.parse_commands(
+					const n = await this.plugin.templater.parser.parse_commands(
 						t,
 						this.plugin.templater.current_functions_object,
 					);
@@ -2596,11 +2542,11 @@ var pi = 10,
 		}
 		generate_move() {
 			return async (e, t) => {
-				let n = t || this.config.target_file,
+				const n = t || this.config.target_file,
 					o = (0, Z.normalizePath)(`${e}.${n.extension}`),
 					s = o.replace(/\\/g, "/").split("/");
 				if ((s.pop(), s.length)) {
-					let a = s.join("/");
+					const a = s.join("/");
 					this.plugin.app.vault.getAbstractFileByPath(a) ||
 						(await this.plugin.app.vault.createFolder(a));
 				}
@@ -2611,7 +2557,7 @@ var pi = 10,
 			return (e = !1) => {
 				let t = "";
 				if (Z.Platform.isMobile) {
-					let n = this.plugin.app.vault.adapter.fs.uri,
+					const n = this.plugin.app.vault.adapter.fs.uri,
 						o = this.plugin.app.vault.adapter.basePath;
 					t = `${n}/${o}`;
 				} else if (this.plugin.app.vault.adapter instanceof Z.FileSystemAdapter)
@@ -2628,7 +2574,7 @@ var pi = 10,
 					throw new w(
 						"File name cannot contain any of these characters: \\ / :",
 					);
-				let t = (0, Z.normalizePath)(
+				const t = (0, Z.normalizePath)(
 					`${this.config.target_file.parent.path}/${e}.${this.config.target_file.extension}`,
 				);
 				return (
@@ -2642,14 +2588,14 @@ var pi = 10,
 		}
 		generate_selection() {
 			return () => {
-				let e = this.plugin.app.workspace.activeEditor;
+				const e = this.plugin.app.workspace.activeEditor;
 				if (!e || !e.editor)
 					throw new w("Active editor is null, can't read selection.");
 				return e.editor.getSelection();
 			};
 		}
 		generate_tags() {
-			let e = this.plugin.app.metadataCache.getFileCache(
+			const e = this.plugin.app.metadataCache.getFileCache(
 				this.config.target_file,
 			);
 			return e ? (0, Z.getAllTags)(e) : null;
@@ -2676,7 +2622,7 @@ var Vr = class extends ue {
 	async teardown() {}
 	async getRequest(e) {
 		try {
-			let t = await (0, ci.requestUrl)(e);
+			const t = await (0, ci.requestUrl)(e);
 			if (t.status < 200 && t.status >= 300)
 				throw new w("Error performing GET request");
 			return t;
@@ -2687,7 +2633,7 @@ var Vr = class extends ue {
 	generate_daily_quote() {
 		return async () => {
 			try {
-				let t = (
+				const t = (
 						await this.getRequest(
 							"https://raw.githubusercontent.com/Zachatoo/quotes-database/refs/heads/main/quotes.json",
 						)
@@ -2712,7 +2658,7 @@ var Vr = class extends ue {
 					s = o.full;
 				if (e && !n)
 					if (e.includes("x")) {
-						let [a, A] = e.split("x");
+						const [a, A] = e.split("x");
 						s = s.concat(`&w=${a}&h=${A}`);
 					} else s = s.concat(`&w=${e}`);
 				return n
@@ -2729,10 +2675,10 @@ var Vr = class extends ue {
 	generate_request() {
 		return async (e, t) => {
 			try {
-				let o = await (await this.getRequest(e)).json;
+				const o = await (await this.getRequest(e)).json;
 				return t && o
 					? t.split(".").reduce((s, a) => {
-							if (s && s.hasOwnProperty(a)) return s[a];
+							if (s && Object.hasOwn(s, a)) return s[a];
 							throw new Error(`Path ${t} not found in the JSON response`);
 						}, o)
 					: o;
@@ -2763,7 +2709,7 @@ var Wr = class extends ue {
 	}
 	generate_on_all_templates_executed() {
 		return (e) => {
-			let t = this.plugin.app.workspace.on(
+			const t = this.plugin.app.workspace.on(
 				"templater:all-templates-executed",
 				async () => {
 					await sr(1), e();
@@ -2780,7 +2726,9 @@ var Kr = class extends ue {
 	}
 	async create_static_templates() {}
 	async create_dynamic_templates() {
-		let e = this.plugin.app.metadataCache.getFileCache(this.config.target_file);
+		const e = this.plugin.app.metadataCache.getFileCache(
+			this.config.target_file,
+		);
 		this.dynamic_functions = new Map(Object.entries(e?.frontmatter || {}));
 	}
 	async teardown() {}
@@ -2802,14 +2750,14 @@ var Ur = class extends Se.Modal {
 			this.submitted || this.reject(new w("Cancelled prompt"));
 	}
 	createForm() {
-		let e = this.contentEl.createDiv();
+		const e = this.contentEl.createDiv();
 		e.addClass("templater-prompt-div");
 		let t;
 		if (this.multi_line) {
 			t = new Se.TextAreaComponent(e);
-			let n = this.contentEl.createDiv();
+			const n = this.contentEl.createDiv();
 			n.addClass("templater-button-div");
-			let o = new Se.ButtonComponent(n);
+			const o = new Se.ButtonComponent(n);
 			o.buttonEl.addClass("mod-cta"),
 				o.setButtonText("Submit").onClick((s) => {
 					this.resolveAndClose(s);
@@ -2890,7 +2838,7 @@ var Jr = class extends ue {
 	}
 	generate_prompt() {
 		return async (e, t, n = !1, o = !1) => {
-			let s = new Ur(this.plugin.app, e, t, o),
+			const s = new Ur(this.plugin.app, e, t, o),
 				a = new Promise((A, c) => s.openAndGetValue(A, c));
 			try {
 				return await a;
@@ -2902,7 +2850,7 @@ var Jr = class extends ue {
 	}
 	generate_suggester() {
 		return async (e, t, n = !1, o = "", s) => {
-			let a = new zr(this.plugin.app, e, t, o, s),
+			const a = new zr(this.plugin.app, e, t, o, s),
 				A = new Promise((c, d) => a.openAndGetValue(c, d));
 			try {
 				return await A;
@@ -2938,14 +2886,14 @@ var Qr = class {
 			this.modules_array.push(new Xr(this.plugin));
 	}
 	async init() {
-		for (let e of this.modules_array) await e.init();
+		for (const e of this.modules_array) await e.init();
 	}
 	async teardown() {
-		for (let e of this.modules_array) await e.teardown();
+		for (const e of this.modules_array) await e.teardown();
 	}
 	async generate_object(e) {
-		let t = {};
-		for (let n of this.modules_array)
+		const t = {};
+		for (const n of this.modules_array)
 			t[n.getName()] = await n.generate_object(e);
 		return t;
 	}
@@ -2961,18 +2909,18 @@ var Zr = class {
 			this.cwd = "";
 		else {
 			this.cwd = this.plugin.app.vault.adapter.getBasePath();
-			let { promisify: t } = require("util"),
+			const { promisify: t } = require("util"),
 				{ exec: n } = require("child_process");
 			this.exec_promise = t(n);
 		}
 	}
 	async generate_system_functions(e) {
-		let t = new Map(),
+		const t = new Map(),
 			n = await this.plugin.templater.functions_generator.generate_object(
 				e,
 				De.INTERNAL,
 			);
-		for (let o of this.plugin.settings.templates_pairs) {
+		for (const o of this.plugin.settings.templates_pairs) {
 			let s = o[0],
 				a = o[1];
 			!s ||
@@ -2981,7 +2929,7 @@ var Zr = class {
 					? t.set(s, () => new Promise((A) => A(ai)))
 					: ((a = await this.plugin.templater.parser.parse_commands(a, n)),
 						t.set(s, async (A) => {
-							let c = { ...process.env, ...A },
+							const c = { ...process.env, ...A },
 								d = {
 									timeout: this.plugin.settings.command_timeout * 1e3,
 									cwd: this.cwd,
@@ -2991,7 +2939,7 @@ var Zr = class {
 									}),
 								};
 							try {
-								let { stdout: f } = await this.exec_promise(a, d);
+								const { stdout: f } = await this.exec_promise(a, d);
 								return f.trimRight();
 							} catch (f) {
 								throw new w(`Error with User Template ${s}`, f);
@@ -3001,7 +2949,7 @@ var Zr = class {
 		return t;
 	}
 	async generate_object(e) {
-		let t = await this.generate_system_functions(e);
+		const t = await this.generate_system_functions(e);
 		return Object.fromEntries(t);
 	}
 };
@@ -3010,19 +2958,19 @@ var en = class {
 		this.plugin = e;
 	}
 	async generate_user_script_functions() {
-		let e = new Map(),
+		const e = new Map(),
 			t = ce(
 				() => Ie(this.plugin.app, this.plugin.settings.user_scripts_folder),
 				`Couldn't find user script folder "${this.plugin.settings.user_scripts_folder}"`,
 			);
 		if (!t) return new Map();
-		for (let n of t)
+		for (const n of t)
 			n.extension.toLowerCase() === "js" &&
 				(await this.load_user_script_function(n, e));
 		return e;
 	}
 	async load_user_script_function(e, t) {
-		let n = (c) => window.require && window.require(c),
+		const n = (c) => window.require && window.require(c),
 			o = {},
 			s = { exports: o },
 			a = await this.plugin.app.vault.read(e);
@@ -3036,7 +2984,7 @@ var en = class {
 		} catch (c) {
 			throw new w(`Failed to load user script at "${e.path}".`, c.message);
 		}
-		let A = o.default || s.exports;
+		const A = o.default || s.exports;
 		if (!A)
 			throw new w(
 				`Failed to load user script at "${e.path}". No exports detected.`,
@@ -3048,7 +2996,7 @@ var en = class {
 		t.set(`${e.basename}`, A);
 	}
 	async generate_object() {
-		let e = await this.generate_user_script_functions();
+		const e = await this.generate_user_script_functions();
 		return Object.fromEntries(e);
 	}
 };
@@ -3072,7 +3020,7 @@ var tn = class {
 };
 var Bo = V(require("obsidian")),
 	De;
-(function (t) {
+((t) => {
 	(t[(t.INTERNAL = 0)] = "INTERNAL"),
 		(t[(t.USER_INTERNAL = 1)] = "USER_INTERNAL");
 })(De || (De = {}));
@@ -3120,7 +3068,7 @@ function qo(r) {
 	r < 36 || ((Fe[r] = Wt), (Wt = r));
 }
 function nn(r) {
-	let e = de(r);
+	const e = de(r);
 	return qo(r), e;
 }
 var ui = new TextDecoder("utf-8", { ignoreBOM: !0, fatal: !0 });
@@ -3134,23 +3082,21 @@ function rt(r, e) {
 }
 function nt(r) {
 	Wt === Fe.length && Fe.push(Fe.length + 1);
-	let e = Wt;
+	const e = Wt;
 	return (Wt = Fe[e]), (Fe[e] = r), e;
 }
 var Me = 0,
 	gr = new TextEncoder("utf-8"),
 	Oo =
 		typeof gr.encodeInto == "function"
-			? function (r, e) {
-					return gr.encodeInto(r, e);
-				}
-			: function (r, e) {
-					let t = gr.encode(r);
+			? (r, e) => gr.encodeInto(r, e)
+			: (r, e) => {
+					const t = gr.encode(r);
 					return e.set(t), { read: r.length, written: t.length };
 				};
 function Je(r, e, t) {
 	if (t === void 0) {
-		let A = gr.encode(r),
+		const A = gr.encode(r),
 			c = e(A.length);
 		return (
 			dr()
@@ -3165,13 +3111,13 @@ function Je(r, e, t) {
 		s = dr(),
 		a = 0;
 	for (; a < n; a++) {
-		let A = r.charCodeAt(a);
+		const A = r.charCodeAt(a);
 		if (A > 127) break;
 		s[o + a] = A;
 	}
 	if (a !== n) {
 		a !== 0 && (r = r.slice(a)), (o = t(o, n, (n = a + r.length * 3)));
-		let A = dr().subarray(o + a, o + n);
+		const A = dr().subarray(o + a, o + n);
 		a += Oo(r, A).written;
 	}
 	return (Me = a), o;
@@ -3184,15 +3130,15 @@ function ge() {
 	return hr.byteLength === 0 && (hr = new Int32Array(v.memory.buffer)), hr;
 }
 function on(r) {
-	let e = typeof r;
+	const e = typeof r;
 	if (e == "number" || e == "boolean" || r == null) return `${r}`;
 	if (e == "string") return `"${r}"`;
 	if (e == "symbol") {
-		let o = r.description;
+		const o = r.description;
 		return o == null ? "Symbol" : `Symbol(${o})`;
 	}
 	if (e == "function") {
-		let o = r.name;
+		const o = r.name;
 		return typeof o == "string" && o.length > 0 ? `Function(${o})` : "Function";
 	}
 	if (Array.isArray(r)) {
@@ -3235,47 +3181,47 @@ function sn(r, e) {
 }
 var jt = class {
 		static __wrap(e) {
-			let t = Object.create(jt.prototype);
+			const t = Object.create(jt.prototype);
 			return (t.ptr = e), t;
 		}
 		__destroy_into_raw() {
-			let e = this.ptr;
+			const e = this.ptr;
 			return (this.ptr = 0), e;
 		}
 		free() {
-			let e = this.__destroy_into_raw();
+			const e = this.__destroy_into_raw();
 			v.__wbg_parserconfig_free(e);
 		}
 		get interpolate() {
-			let e = v.__wbg_get_parserconfig_interpolate(this.ptr);
+			const e = v.__wbg_get_parserconfig_interpolate(this.ptr);
 			return String.fromCodePoint(e);
 		}
 		set interpolate(e) {
 			v.__wbg_set_parserconfig_interpolate(this.ptr, e.codePointAt(0));
 		}
 		get execution() {
-			let e = v.__wbg_get_parserconfig_execution(this.ptr);
+			const e = v.__wbg_get_parserconfig_execution(this.ptr);
 			return String.fromCodePoint(e);
 		}
 		set execution(e) {
 			v.__wbg_set_parserconfig_execution(this.ptr, e.codePointAt(0));
 		}
 		get single_whitespace() {
-			let e = v.__wbg_get_parserconfig_single_whitespace(this.ptr);
+			const e = v.__wbg_get_parserconfig_single_whitespace(this.ptr);
 			return String.fromCodePoint(e);
 		}
 		set single_whitespace(e) {
 			v.__wbg_set_parserconfig_single_whitespace(this.ptr, e.codePointAt(0));
 		}
 		get multiple_whitespace() {
-			let e = v.__wbg_get_parserconfig_multiple_whitespace(this.ptr);
+			const e = v.__wbg_get_parserconfig_multiple_whitespace(this.ptr);
 			return String.fromCodePoint(e);
 		}
 		set multiple_whitespace(e) {
 			v.__wbg_set_parserconfig_multiple_whitespace(this.ptr, e.codePointAt(0));
 		}
 		constructor(e, t, n, o, s, a, A) {
-			let c = Je(e, v.__wbindgen_malloc, v.__wbindgen_realloc),
+			const c = Je(e, v.__wbindgen_malloc, v.__wbindgen_realloc),
 				d = Me,
 				f = Je(t, v.__wbindgen_malloc, v.__wbindgen_realloc),
 				b = Me,
@@ -3297,7 +3243,7 @@ var jt = class {
 		}
 		get opening_tag() {
 			try {
-				let n = v.__wbindgen_add_to_stack_pointer(-16);
+				const n = v.__wbindgen_add_to_stack_pointer(-16);
 				v.parserconfig_opening_tag(n, this.ptr);
 				var e = ge()[n / 4 + 0],
 					t = ge()[n / 4 + 1];
@@ -3307,13 +3253,13 @@ var jt = class {
 			}
 		}
 		set opening_tag(e) {
-			let t = Je(e, v.__wbindgen_malloc, v.__wbindgen_realloc),
+			const t = Je(e, v.__wbindgen_malloc, v.__wbindgen_realloc),
 				n = Me;
 			v.parserconfig_set_opening_tag(this.ptr, t, n);
 		}
 		get closing_tag() {
 			try {
-				let n = v.__wbindgen_add_to_stack_pointer(-16);
+				const n = v.__wbindgen_add_to_stack_pointer(-16);
 				v.parserconfig_closing_tag(n, this.ptr);
 				var e = ge()[n / 4 + 0],
 					t = ge()[n / 4 + 1];
@@ -3323,13 +3269,13 @@ var jt = class {
 			}
 		}
 		set closing_tag(e) {
-			let t = Je(e, v.__wbindgen_malloc, v.__wbindgen_realloc),
+			const t = Je(e, v.__wbindgen_malloc, v.__wbindgen_realloc),
 				n = Me;
 			v.parserconfig_set_closing_tag(this.ptr, t, n);
 		}
 		get global_var() {
 			try {
-				let n = v.__wbindgen_add_to_stack_pointer(-16);
+				const n = v.__wbindgen_add_to_stack_pointer(-16);
 				v.parserconfig_global_var(n, this.ptr);
 				var e = ge()[n / 4 + 0],
 					t = ge()[n / 4 + 1];
@@ -3339,34 +3285,34 @@ var jt = class {
 			}
 		}
 		set global_var(e) {
-			let t = Je(e, v.__wbindgen_malloc, v.__wbindgen_realloc),
+			const t = Je(e, v.__wbindgen_malloc, v.__wbindgen_realloc),
 				n = Me;
 			v.parserconfig_set_global_var(this.ptr, t, n);
 		}
 	},
 	qt = class {
 		static __wrap(e) {
-			let t = Object.create(qt.prototype);
+			const t = Object.create(qt.prototype);
 			return (t.ptr = e), t;
 		}
 		__destroy_into_raw() {
-			let e = this.ptr;
+			const e = this.ptr;
 			return (this.ptr = 0), e;
 		}
 		free() {
-			let e = this.__destroy_into_raw();
+			const e = this.__destroy_into_raw();
 			v.__wbg_renderer_free(e);
 		}
 		constructor(e) {
 			Io(e, jt);
 			var t = e.ptr;
 			e.ptr = 0;
-			let n = v.renderer_new(t);
+			const n = v.renderer_new(t);
 			return qt.__wrap(n);
 		}
 		render_content(e, t) {
 			try {
-				let a = v.__wbindgen_add_to_stack_pointer(-16),
+				const a = v.__wbindgen_add_to_stack_pointer(-16),
 					A = Je(e, v.__wbindgen_malloc, v.__wbindgen_realloc),
 					c = Me;
 				v.renderer_render_content(a, this.ptr, A, c, So(t));
@@ -3393,68 +3339,64 @@ async function Do(r, e) {
 					);
 				else throw n;
 			}
-		let t = await r.arrayBuffer();
+		const t = await r.arrayBuffer();
 		return await WebAssembly.instantiate(t, e);
-	} else {
-		let t = await WebAssembly.instantiate(r, e);
-		return t instanceof WebAssembly.Instance ? { instance: t, module: r } : t;
 	}
+	const t = await WebAssembly.instantiate(r, e);
+	return t instanceof WebAssembly.Instance ? { instance: t, module: r } : t;
 }
 function $o() {
-	let r = {};
+	const r = {};
 	return (
 		(r.wbg = {}),
-		(r.wbg.__wbindgen_object_drop_ref = function (e) {
+		(r.wbg.__wbindgen_object_drop_ref = (e) => {
 			nn(e);
 		}),
-		(r.wbg.__wbindgen_string_new = function (e, t) {
-			let n = rt(e, t);
+		(r.wbg.__wbindgen_string_new = (e, t) => {
+			const n = rt(e, t);
 			return nt(n);
 		}),
-		(r.wbg.__wbindgen_string_get = function (e, t) {
-			let n = de(t),
+		(r.wbg.__wbindgen_string_get = (e, t) => {
+			const n = de(t),
 				o = typeof n == "string" ? n : void 0;
 			var s = Co(o) ? 0 : Je(o, v.__wbindgen_malloc, v.__wbindgen_realloc),
 				a = Me;
 			(ge()[e / 4 + 1] = a), (ge()[e / 4 + 0] = s);
 		}),
-		(r.wbg.__wbg_call_97ae9d8645dc388b = function () {
-			return sn(function (e, t) {
-				let n = de(e).call(de(t));
+		(r.wbg.__wbg_call_97ae9d8645dc388b = () =>
+			sn((e, t) => {
+				const n = de(e).call(de(t));
 				return nt(n);
-			}, arguments);
-		}),
-		(r.wbg.__wbg_new_8d2af00bc1e329ee = function (e, t) {
-			let n = new Error(rt(e, t));
+			}, arguments)),
+		(r.wbg.__wbg_new_8d2af00bc1e329ee = (e, t) => {
+			const n = new Error(rt(e, t));
 			return nt(n);
 		}),
-		(r.wbg.__wbg_message_fe2af63ccc8985bc = function (e) {
-			let t = de(e).message;
+		(r.wbg.__wbg_message_fe2af63ccc8985bc = (e) => {
+			const t = de(e).message;
 			return nt(t);
 		}),
-		(r.wbg.__wbg_newwithargs_8fe23e3842840c8e = function (e, t, n, o) {
-			let s = new Function(rt(e, t), rt(n, o));
+		(r.wbg.__wbg_newwithargs_8fe23e3842840c8e = (e, t, n, o) => {
+			const s = new Function(rt(e, t), rt(n, o));
 			return nt(s);
 		}),
-		(r.wbg.__wbg_call_168da88779e35f61 = function () {
-			return sn(function (e, t, n) {
-				let o = de(e).call(de(t), de(n));
+		(r.wbg.__wbg_call_168da88779e35f61 = () =>
+			sn((e, t, n) => {
+				const o = de(e).call(de(t), de(n));
 				return nt(o);
-			}, arguments);
-		}),
-		(r.wbg.__wbg_call_3999bee59e9f7719 = function () {
-			return sn(function (e, t, n, o) {
-				let s = de(e).call(de(t), de(n), de(o));
+			}, arguments)),
+		(r.wbg.__wbg_call_3999bee59e9f7719 = () =>
+			sn((e, t, n, o) => {
+				const s = de(e).call(de(t), de(n), de(o));
 				return nt(s);
-			}, arguments);
-		}),
-		(r.wbg.__wbindgen_debug_string = function (e, t) {
-			let n = on(de(t)),
+			}, arguments)),
+		(r.wbg.__wbindgen_debug_string = (e, t) => {
+			const n = on(de(t)),
 				o = Je(n, v.__wbindgen_malloc, v.__wbindgen_realloc),
 				s = Me;
 			(ge()[e / 4 + 1] = s), (ge()[e / 4 + 0] = o);
 		}),
-		(r.wbg.__wbindgen_throw = function (e, t) {
+		(r.wbg.__wbindgen_throw = (e, t) => {
 			throw new Error(rt(e, t));
 		}),
 		r
@@ -3472,13 +3414,13 @@ function Ro(r, e) {
 }
 async function mi(r) {
 	typeof r == "undefined" && (r = new URL("rusty_engine_bg.wasm", Lo.url));
-	let e = $o();
+	const e = $o();
 	(typeof r == "string" ||
 		(typeof Request == "function" && r instanceof Request) ||
 		(typeof URL == "function" && r instanceof URL)) &&
 		(r = fetch(r)),
 		No(e);
-	let { instance: t, module: n } = await Do(await r, e);
+	const { instance: t, module: n } = await Do(await r, e);
 	return Ro(t, n);
 }
 var fi = mi;
@@ -3488,7 +3430,7 @@ var di = Mn(
 var an = class {
 	async init() {
 		await fi(di);
-		let e = new jt("<%", "%>", "\0", "*", "-", "_", "tR");
+		const e = new jt("<%", "%>", "\0", "*", "-", "_", "tR");
 		this.renderer = new qt(e);
 	}
 	async parse_commands(e, t) {
@@ -3496,7 +3438,7 @@ var an = class {
 	}
 };
 var $e;
-(function (a) {
+((a) => {
 	(a[(a.CreateNewFromTemplate = 0)] = "CreateNewFromTemplate"),
 		(a[(a.AppendActiveFile = 1)] = "AppendActiveFile"),
 		(a[(a.OverwriteFile = 2)] = "OverwriteFile"),
@@ -3518,15 +3460,18 @@ var Kt = class {
 			);
 	}
 	create_running_config(e, t, n) {
-		let o = xt(this.plugin.app);
+		const o = xt(this.plugin.app);
 		return { template_file: e, target_file: t, run_mode: n, active_file: o };
 	}
 	async read_and_parse_template(e) {
-		let t = await this.plugin.app.vault.read(e.template_file);
+		const t = await this.plugin.app.vault.read(e.template_file);
 		return this.parse_template(e, t);
 	}
 	async parse_template(e, t) {
-		let n = await this.functions_generator.generate_object(e, De.USER_INTERNAL);
+		const n = await this.functions_generator.generate_object(
+			e,
+			De.USER_INTERNAL,
+		);
 		return (
 			(this.current_functions_object = n),
 			await this.parser.parse_commands(t, n)
@@ -3545,7 +3490,7 @@ var Kt = class {
 		if (!t)
 			switch (this.plugin.app.vault.getConfig("newFileLocation")) {
 				case "current": {
-					let b = xt(this.plugin.app);
+					const b = xt(this.plugin.app);
 					b && (t = b.parent);
 					break;
 				}
@@ -3558,9 +3503,9 @@ var Kt = class {
 				default:
 					break;
 			}
-		let s = (e instanceof ve.TFile && e.extension) || "md",
+		const s = (e instanceof ve.TFile && e.extension) || "md",
 			a = await ye(async () => {
-				let f = t instanceof ve.TFolder ? t.path : t,
+				const f = t instanceof ve.TFolder ? t.path : t,
 					b = this.plugin.app.vault.getAvailablePath(
 						(0, ve.normalizePath)(`${f ?? ""}/${n || "Untitled"}`),
 						s,
@@ -3574,7 +3519,7 @@ var Kt = class {
 				);
 			}, `Couldn't create ${s} file.`);
 		if (a == null) return;
-		let { path: A } = a;
+		const { path: A } = a;
 		this.start_templater_task(A);
 		let c, d;
 		if (
@@ -3602,7 +3547,7 @@ var Kt = class {
 			}),
 			o)
 		) {
-			let f = this.plugin.app.workspace.getLeaf(!1);
+			const f = this.plugin.app.workspace.getLeaf(!1);
 			if (!f) {
 				K(new w("No active leaf"));
 				return;
@@ -3614,15 +3559,15 @@ var Kt = class {
 		return await this.end_templater_task(A), a;
 	}
 	async append_template_to_active_file(e) {
-		let t = this.plugin.app.workspace.getActiveViewOfType(ve.MarkdownView),
+		const t = this.plugin.app.workspace.getActiveViewOfType(ve.MarkdownView),
 			n = this.plugin.app.workspace.activeEditor;
 		if (!n || !n.file || !n.editor) {
 			K(new w("No active editor, can't append templates."));
 			return;
 		}
-		let { path: o } = n.file;
+		const { path: o } = n.file;
 		this.start_templater_task(o);
-		let s = this.create_running_config(e, n.file, 1),
+		const s = this.create_running_config(e, n.file, 1),
 			a = await ye(
 				async () => this.read_and_parse_template(s),
 				"Template parsing error, aborting.",
@@ -3631,7 +3576,7 @@ var Kt = class {
 			await this.end_templater_task(o);
 			return;
 		}
-		let c = n.editor.getDoc(),
+		const c = n.editor.getDoc(),
 			d = c.listSelections();
 		c.replaceSelection(a),
 			n.file && (await this.plugin.app.vault.append(n.file, "")),
@@ -3646,9 +3591,9 @@ var Kt = class {
 			await this.end_templater_task(o);
 	}
 	async write_template_to_file(e, t) {
-		let { path: n } = t;
+		const { path: n } = t;
 		this.start_templater_task(n);
-		let o = this.plugin.app.workspace.activeEditor,
+		const o = this.plugin.app.workspace.activeEditor,
 			s = xt(this.plugin.app),
 			a = this.create_running_config(e, t, 2),
 			A = await ye(
@@ -3672,7 +3617,7 @@ var Kt = class {
 			await this.end_templater_task(n);
 	}
 	overwrite_active_file_commands() {
-		let e = this.plugin.app.workspace.activeEditor;
+		const e = this.plugin.app.workspace.activeEditor;
 		if (!e || !e.file) {
 			K(new w("Active editor is null, can't overwrite content"));
 			return;
@@ -3680,9 +3625,9 @@ var Kt = class {
 		this.overwrite_file_commands(e.file, !0);
 	}
 	async overwrite_file_commands(e, t = !1) {
-		let { path: n } = e;
+		const { path: n } = e;
 		this.start_templater_task(n);
-		let o = this.create_running_config(e, e, t ? 3 : 2),
+		const o = this.create_running_config(e, e, t ? 3 : 2),
 			s = await ye(
 				async () => this.read_and_parse_template(o),
 				"Template parsing error, aborting.",
@@ -3710,14 +3655,14 @@ var Kt = class {
 			if (c !== null) {
 				let d = n.exec(c);
 				if (d !== null) {
-					let f = this.plugin.app.metadataCache.getFirstLinkpathDest(
+					const f = this.plugin.app.metadataCache.getFirstLinkpathDest(
 						"",
 						t.sourcePath,
 					);
 					if (!f || !(f instanceof ve.TFile)) return;
 					if (!a) {
 						a = !0;
-						let b = this.create_running_config(f, f, 4);
+						const b = this.create_running_config(f, f, 4);
 						(A = await this.functions_generator.generate_object(
 							b,
 							De.USER_INTERNAL,
@@ -3726,13 +3671,13 @@ var Kt = class {
 					}
 				}
 				for (; d != null; ) {
-					let f = d[1] + d[2],
+					const f = d[1] + d[2],
 						b = await ye(
 							async () => await this.parser.parse_commands(f, A),
 							`Command Parsing error in dynamic command '${f}'`,
 						);
 					if (b == null) return;
-					let k = n.lastIndex - d[0].length,
+					const k = n.lastIndex - d[0].length,
 						x = n.lastIndex;
 					(c = c.substring(0, k) + b + c.substring(x)),
 						(n.lastIndex += b.length - d[0].length),
@@ -3744,7 +3689,7 @@ var Kt = class {
 	}
 	get_new_file_template_for_folder(e) {
 		do {
-			let t = this.plugin.settings.folder_templates.find(
+			const t = this.plugin.settings.folder_templates.find(
 				(n) => n.folder == e.path,
 			);
 			if (t && t.template) return t.template;
@@ -3752,28 +3697,28 @@ var Kt = class {
 		} while (e);
 	}
 	get_new_file_template_for_file(e) {
-		let t = this.plugin.settings.file_templates.find((n) =>
+		const t = this.plugin.settings.file_templates.find((n) =>
 			new RegExp(n.regex).test(e.path),
 		);
 		if (t && t.template) return t.template;
 	}
 	static async on_file_creation(e, t, n) {
 		if (!(n instanceof ve.TFile) || n.extension !== "md") return;
-		let o = (0, ve.normalizePath)(e.plugin.settings.templates_folder);
+		const o = (0, ve.normalizePath)(e.plugin.settings.templates_folder);
 		if (
 			!(n.path.includes(o) && o !== "/") &&
 			(await sr(300), !e.files_with_pending_templates.has(n.path))
 		)
 			if (n.stat.size == 0 && e.plugin.settings.enable_folder_templates) {
-				let s = e.get_new_file_template_for_folder(n.parent);
+				const s = e.get_new_file_template_for_folder(n.parent);
 				if (!s) return;
-				let a = await ye(async () => lt(t, s), `Couldn't find template ${s}`);
+				const a = await ye(async () => lt(t, s), `Couldn't find template ${s}`);
 				if (a == null) return;
 				await e.write_template_to_file(a, n);
 			} else if (n.stat.size == 0 && e.plugin.settings.enable_file_templates) {
-				let s = e.get_new_file_template_for_file(n);
+				const s = e.get_new_file_template_for_file(n);
 				if (!s) return;
-				let a = await ye(async () => lt(t, s), `Couldn't find template ${s}`);
+				const a = await ye(async () => lt(t, s), `Couldn't find template ${s}`);
 				if (a == null) return;
 				await e.write_template_to_file(a, n);
 			} else
@@ -3784,16 +3729,16 @@ var Kt = class {
 						);
 	}
 	async execute_startup_scripts() {
-		for (let e of this.plugin.settings.startup_templates) {
+		for (const e of this.plugin.settings.startup_templates) {
 			if (!e) continue;
-			let t = ce(
+			const t = ce(
 				() => lt(this.plugin.app, e),
 				`Couldn't find startup template "${e}"`,
 			);
 			if (!t) continue;
-			let { path: n } = t;
+			const { path: n } = t;
 			this.start_templater_task(n);
-			let o = this.create_running_config(t, t, 5);
+			const o = this.create_running_config(t, t, 5);
 			await ye(
 				async () => this.read_and_parse_template(o),
 				"Startup Template parsing error, aborting.",
@@ -3817,7 +3762,7 @@ var gi = V(require("obsidian")),
 				this.update_file_menu();
 		}
 		update_syntax_highlighting() {
-			let e = this.plugin.editor_handler.desktopShouldHighlight(),
+			const e = this.plugin.editor_handler.desktopShouldHighlight(),
 				t = this.plugin.editor_handler.mobileShouldHighlight();
 			e || t
 				? this.plugin.editor_handler.enable_highlighter()
@@ -3905,7 +3850,7 @@ var ln = class {
 					name: `Insert ${t}`,
 					icon: "templater-icon",
 					callback: () => {
-						let n = ce(
+						const n = ce(
 							() => lt(this.plugin.app, t),
 							"Couldn't find the template file associated with this hotkey",
 						);
@@ -3917,7 +3862,7 @@ var ln = class {
 					name: `Create ${t}`,
 					icon: "templater-icon",
 					callback: () => {
-						let n = ce(
+						const n = ce(
 							() => lt(this.plugin.app, t),
 							"Couldn't find the template file associated with this hotkey",
 						);
@@ -3938,13 +3883,14 @@ var cn = class {
 		this.app = e;
 	}
 	async jump_to_next_cursor_location() {
-		let e = this.app.workspace.activeEditor;
+		const e = this.app.workspace.activeEditor;
 		if (!e || !e.editor) return;
-		let t = e.editor.getValue(),
+		const t = e.editor.getValue(),
 			{ new_content: n, positions: o } =
 				this.replace_and_get_cursor_positions(t);
 		if (o) {
-			let s = e instanceof pn.MarkdownView ? e.currentMode.getFoldInfo() : null;
+			const s =
+				e instanceof pn.MarkdownView ? e.currentMode.getFoldInfo() : null;
 			e.editor.setValue(n),
 				s &&
 					Array.isArray(s.folds) &&
@@ -3955,7 +3901,7 @@ var cn = class {
 				this.set_cursor_location(o);
 		}
 		if (this.app.vault.getConfig("vimMode")) {
-			let s = e.editor.cm.cm;
+			const s = e.editor.cm.cm;
 			window.CodeMirrorAdapter.Vim.handleKey(s, "i", "mapping");
 		}
 	}
@@ -3974,25 +3920,25 @@ var cn = class {
 			o++, s = a
 		);
 		s += 1;
-		let A = e.slice(s, t).length;
+		const A = e.slice(s, t).length;
 		return { line: o, ch: A };
 	}
 	replace_and_get_cursor_positions(e) {
 		let t = [],
 			n,
-			o = new RegExp("<%\\s*tp.file.cursor\\((?<order>[0-9]*)\\)\\s*%>", "g");
+			o = /<%\s*tp.file.cursor\((?<order>[0-9]*)\)\s*%>/g;
 		for (; (n = o.exec(e)) != null; ) t.push(n);
 		if (t.length === 0) return {};
 		t.sort(
 			(c, d) =>
 				Number(c.groups && c.groups.order) - Number(d.groups && d.groups.order),
 		);
-		let s = t[0][0];
+		const s = t[0][0];
 		t = t.filter((c) => c[0] === s);
 		let a = [],
 			A = 0;
-		for (let c of t) {
-			let d = c.index - A;
+		for (const c of t) {
+			const d = c.index - A;
 			if (
 				(a.push(this.get_editor_position_from_index(e, d)),
 				(e = e.replace(new RegExp(Bn(c[0])), "")),
@@ -4004,12 +3950,12 @@ var cn = class {
 		return { new_content: e, positions: a };
 	}
 	set_cursor_location(e) {
-		let t = this.app.workspace.activeEditor;
+		const t = this.app.workspace.activeEditor;
 		if (!t || !t.editor) return;
-		let n = t.editor,
+		const n = t.editor,
 			o = [];
-		for (let a of e) o.push({ from: a });
-		let s = { selections: o };
+		for (const a of e) o.push({ from: a });
+		const s = { selections: o };
 		n.transaction(s);
 	}
 };
@@ -4835,7 +4781,7 @@ var An = class {
 		if (e === "user") {
 			if (!this.plugin.settings || !this.plugin.settings.user_scripts_folder)
 				return;
-			let n = ce(
+			const n = ce(
 				() => Ie(this.plugin.app, this.plugin.settings.user_scripts_folder),
 				"User Scripts folder doesn't exist",
 			);
@@ -4858,28 +4804,28 @@ var An = class {
 						[],
 					);
 		}
-		if (!!this.documentation.tp[e].functions)
+		if (this.documentation.tp[e].functions)
 			return Object.values(this.documentation.tp[e].functions).map(
 				(n) => ((n.queryKey = n.name), n),
 			);
 	}
 	get_app_functions_documentation(e, t) {
 		if (!kr(e)) return [];
-		let n = t.split(".");
+		const n = t.split(".");
 		if (n.length === 0) return [];
 		let o = e;
 		for (let c = 0; c < n.length - 1; c++) {
-			let d = n[c];
+			const d = n[c];
 			if (d in o) {
 				if (!kr(o[d])) return [];
 				o = o[d];
 			}
 		}
-		let s = ["tp", "app", ...n.slice(0, n.length - 1)].join("."),
+		const s = ["tp", "app", ...n.slice(0, n.length - 1)].join("."),
 			a = n.slice(0, n.length - 1).join("."),
 			A = [];
-		for (let c in o) {
-			let d = `${s}.${c}`,
+		for (const c in o) {
+			const d = `${s}.${c}`,
 				f = a ? `${a}.${c}` : c;
 			A.push({
 				name: c,
@@ -4898,7 +4844,7 @@ var An = class {
 		return this.documentation.tp[e].functions[t];
 	}
 	get_argument_documentation(e, t, n) {
-		let o = this.get_function_documentation(e, t);
+		const o = this.get_function_documentation(e, t);
 		return !o || !o.args ? null : o.args[n];
 	}
 };
@@ -4910,7 +4856,7 @@ var un = class extends wi.EditorSuggest {
 		this.documentation = new An(e);
 	}
 	onTrigger(e, t, n) {
-		let o = t.getRange({ line: e.line, ch: 0 }, { line: e.line, ch: e.ch }),
+		const o = t.getRange({ line: e.line, ch: 0 }, { line: e.line, ch: e.ch }),
 			s = this.tp_keyword_regex.exec(o);
 		if (!s) return null;
 		let a,
@@ -4921,7 +4867,7 @@ var un = class extends wi.EditorSuggest {
 				(this.function_name = s.groups.fn || ""),
 				(a = this.function_name);
 		} else (this.function_trigger = !1), (a = this.module_name);
-		let c = {
+		const c = {
 			start: { line: e.line, ch: e.ch - a.length },
 			end: { line: e.line, ch: e.ch },
 			query: a,
@@ -4953,7 +4899,7 @@ var un = class extends wi.EditorSuggest {
 			e.description && t.createEl("div", { text: e.description });
 	}
 	selectSuggestion(e, t) {
-		let n = this.app.workspace.activeEditor;
+		const n = this.app.workspace.activeEditor;
 		if (
 			!(!n || !n.editor) &&
 			(n.editor.replaceRange(
@@ -4963,16 +4909,15 @@ var un = class extends wi.EditorSuggest {
 			),
 			this.latest_trigger_info.start.ch == this.latest_trigger_info.end.ch)
 		) {
-			let o = this.latest_trigger_info.end;
+			const o = this.latest_trigger_info.end;
 			(o.ch += e.queryKey.length), n.editor.setCursor(o);
 		}
 	}
 };
-(function (r) {
+((r) => {
 	r(window.CodeMirror);
-})(function (r) {
-	"use strict";
-	r.defineMode("javascript", function (e, t) {
+})((r) => {
+	r.defineMode("javascript", (e, t) => {
 		var n = e.indentUnit,
 			o = t.statementIndent,
 			s = t.jsonld,
@@ -4980,7 +4925,7 @@ var un = class extends wi.EditorSuggest {
 			A = t.trackScope !== !1,
 			c = t.typescript,
 			d = t.wordCharacters || /[\w$\xa1-\uffff]/,
-			f = (function () {
+			f = (() => {
 				function i(pe) {
 					return { type: pe, style: "keyword" };
 				}
@@ -5053,16 +4998,16 @@ var un = class extends wi.EditorSuggest {
 		function B(i, l) {
 			var u = i.next();
 			if (u == '"' || u == "'") return (l.tokenize = Y(u)), l.tokenize(i, l);
-			if (u == "." && i.match(/^\d[\d_]*(?:[eE][+\-]?[\d_]+)?/))
+			if (u == "." && i.match(/^\d[\d_]*(?:[eE][+-]?[\d_]+)?/))
 				return j("number", "number");
 			if (u == "." && i.match("..")) return j("spread", "meta");
-			if (/[\[\]{}\(\),;\:\.]/.test(u)) return j(u);
+			if (/[[\]{}(),;:.]/.test(u)) return j(u);
 			if (u == "=" && i.eat(">")) return j("=>", "operator");
 			if (u == "0" && i.match(/^(?:x[\dA-Fa-f_]+|o[0-7_]+|b[01_]+)n?/))
 				return j("number", "number");
 			if (/\d/.test(u))
 				return (
-					i.match(/^[\d_]*(?:n|(?:\.[\d_]*)?(?:[eE][+\-]?[\d_]+)?)?/),
+					i.match(/^[\d_]*(?:n|(?:\.[\d_]*)?(?:[eE][+-]?[\d_]+)?)?/),
 					j("number", "number")
 				);
 			if (u == "/")
@@ -5103,7 +5048,7 @@ var un = class extends wi.EditorSuggest {
 					}
 					if (
 						g == "async" &&
-						i.match(/^(\s|\/\*([^*]|\*(?!\/))*?\*\/)*[\[\(\w]/, !1)
+						i.match(/^(\s|\/\*([^*]|\*(?!\/))*?\*\/)*[[(\w]/, !1)
 					)
 						return j("async", "keyword", g);
 				}
@@ -5111,7 +5056,7 @@ var un = class extends wi.EditorSuggest {
 			}
 		}
 		function Y(i) {
-			return function (l, u) {
+			return (l, u) => {
 				var g = !1,
 					E;
 				if (s && l.peek() == "@" && l.match(k))
@@ -5165,7 +5110,7 @@ var un = class extends wi.EditorSuggest {
 						}
 					} else if (Oe >= 3 && Oe < 6) ++E;
 					else if (d.test(pe)) q = !0;
-					else if (/["'\/`]/.test(pe))
+					else if (/["'/`]/.test(pe))
 						for (; ; --$) {
 							if ($ == 0) return;
 							var Li = i.string.charAt($ - 1);
@@ -5214,7 +5159,7 @@ var un = class extends wi.EditorSuggest {
 					m.marked = null,
 					m.cc = q,
 					m.style = l,
-					i.lexical.hasOwnProperty("align") || (i.lexical.align = !0);
+					Object.hasOwn(i.lexical, "align") || (i.lexical.align = !0);
 				;
 			) {
 				var $ = q.length ? q.pop() : a ? S : H;
@@ -5265,7 +5210,7 @@ var un = class extends wi.EditorSuggest {
 					var u = oe(i, l.prev);
 					return u ? (u == l.prev ? l : new Pe(u, l.vars, !0)) : null;
 				} else return we(i, l.vars) ? l : new Pe(l.prev, new fe(i, l.vars), !1);
-			else return null;
+			return null;
 		}
 		function se(i) {
 			return (
@@ -5297,7 +5242,7 @@ var un = class extends wi.EditorSuggest {
 		}
 		ae.lex = !0;
 		function y(i, l) {
-			var u = function () {
+			var u = () => {
 				var g = m.state,
 					E = g.indented;
 				if (g.lexical.type == "stat") E = g.lexical.indented;
@@ -5429,7 +5374,7 @@ var un = class extends wi.EditorSuggest {
 				if (i == "variable") return h(Be, be, F("=>"), g, ae);
 			}
 			var E = u ? Xe : Ye;
-			return R.hasOwnProperty(i)
+			return Object.hasOwn(R, i)
 				? p(E)
 				: i == "function"
 					? p(Ze, E)
@@ -5452,7 +5397,7 @@ var un = class extends wi.EditorSuggest {
 													: p();
 		}
 		function Le(i) {
-			return i.match(/[;\}\)\],]/) ? h() : h(S);
+			return i.match(/[;})\],]/) ? h() : h(S);
 		}
 		function Ye(i, l) {
 			return i == "," ? p(Le) : Xe(i, l, !1);
@@ -5501,13 +5446,12 @@ var un = class extends wi.EditorSuggest {
 			return C(m.stream, m.state), h(i == "{" ? H : le);
 		}
 		function He(i) {
-			return function (l) {
-				return l == "."
+			return (l) =>
+				l == "."
 					? p(i ? Qt : vt)
 					: l == "variable" && c
 						? p(Mi, i ? Xe : Ye)
 						: h(i ? le : S);
-			};
 		}
 		function vt(i, l) {
 			if (l == "target") return (m.marked = "keyword"), p(Ye);
@@ -5533,16 +5477,15 @@ var un = class extends wi.EditorSuggest {
 						(m.state.fatArrowAt = m.stream.pos + u[0].length),
 					p(qe)
 				);
-			} else {
-				if (i == "number" || i == "string")
-					return (m.marked = s ? "property" : m.style + " property"), p(qe);
-				if (i == "jsonld-keyword") return p(qe);
-				if (c && se(l)) return (m.marked = "keyword"), p(st);
-				if (i == "[") return p(S, wt, F("]"), qe);
-				if (i == "spread") return p(le, qe);
-				if (l == "*") return (m.marked = "keyword"), p(st);
-				if (i == ":") return h(qe);
 			}
+			if (i == "number" || i == "string")
+				return (m.marked = s ? "property" : m.style + " property"), p(qe);
+			if (i == "jsonld-keyword") return p(qe);
+			if (c && se(l)) return (m.marked = "keyword"), p(st);
+			if (i == "[") return p(S, wt, F("]"), qe);
+			if (i == "spread") return p(le, qe);
+			if (l == "*") return (m.marked = "keyword"), p(st);
+			if (i == ":") return h(qe);
 		}
 		function er(i) {
 			return i != "variable" ? h(qe) : ((m.marked = "property"), p(Ze));
@@ -5557,9 +5500,7 @@ var un = class extends wi.EditorSuggest {
 					var $ = m.state.lexical;
 					return (
 						$.info == "call" && ($.pos = ($.pos || 0) + 1),
-						p(function (pe, Oe) {
-							return pe == l || Oe == l ? h() : h(i);
-						}, g)
+						p((pe, Oe) => (pe == l || Oe == l ? h() : h(i)), g)
 					);
 				}
 				return E == l || q == l
@@ -5568,9 +5509,7 @@ var un = class extends wi.EditorSuggest {
 						? h(i)
 						: p(F(l));
 			}
-			return function (E, q) {
-				return E == l || q == l ? p() : h(i, g);
-			};
+			return (E, q) => (E == l || q == l ? p() : h(i, g));
 		}
 		function Ct(i, l, u) {
 			for (var g = 3; g < arguments.length; g++) m.cc.push(arguments[g]);
@@ -5611,11 +5550,7 @@ var un = class extends wi.EditorSuggest {
 			if (i == "=>") return p(D);
 		}
 		function wr(i) {
-			return i.match(/[\}\)\]]/)
-				? p()
-				: i == "," || i == ";"
-					? p(wr)
-					: h(It, wr);
+			return i.match(/[})\]]/) ? p() : i == "," || i == ";" ? p(wr) : h(It, wr);
 		}
 		function It(i, l) {
 			if (i == "variable" || m.style == "keyword")
@@ -5624,7 +5559,7 @@ var un = class extends wi.EditorSuggest {
 			if (i == ":") return p(D);
 			if (i == "[") return p(F("variable"), Ei, F("]"), It);
 			if (i == "(") return h(yt, It);
-			if (!i.match(/[;\}\)\],]/)) return p();
+			if (!i.match(/[;})\],]/)) return p();
 		}
 		function br(i, l) {
 			return i != "quasi"
@@ -5835,7 +5770,7 @@ var un = class extends wi.EditorSuggest {
 		function Tn(i, l, u) {
 			return (
 				(l.tokenize == B &&
-					/^(?:operator|sof|keyword [bcd]|case|new|export|default|spread|[\[{}\(,;:]|=>)$/.test(
+					/^(?:operator|sof|keyword [bcd]|case|new|export|default|spread|[[{}(,;:]|=>)$/.test(
 						l.lastType,
 					)) ||
 				(l.lastType == "quasi" &&
@@ -5843,7 +5778,7 @@ var un = class extends wi.EditorSuggest {
 			);
 		}
 		return {
-			startState: function (i) {
+			startState: (i) => {
 				var l = {
 					tokenize: B,
 					lastType: "sof",
@@ -5860,10 +5795,10 @@ var un = class extends wi.EditorSuggest {
 					l
 				);
 			},
-			token: function (i, l) {
+			token: (i, l) => {
 				if (
 					(i.sol() &&
-						(l.lexical.hasOwnProperty("align") || (l.lexical.align = !1),
+						(Object.hasOwn(l.lexical, "align") || (l.lexical.align = !1),
 						(l.indented = i.indentation()),
 						C(i, l)),
 					l.tokenize != N && i.eatSpace())
@@ -5876,7 +5811,7 @@ var un = class extends wi.EditorSuggest {
 							O == "operator" && (P == "++" || P == "--") ? "incdec" : O),
 						G(l, u, O, P, i));
 			},
-			indent: function (i, l) {
+			indent: (i, l) => {
 				if (i.tokenize == N || i.tokenize == T) return r.Pass;
 				if (i.tokenize != B) return 0;
 				var u = l && l.charAt(0),
@@ -5894,7 +5829,7 @@ var un = class extends wi.EditorSuggest {
 					(u == "}" ||
 						((E = i.cc[i.cc.length - 1]) &&
 							(E == Ye || E == Xe) &&
-							!/^[,\.=+\-*:?[\(]/.test(l)));
+							!/^[,.=+\-*:?[(]/.test(l)));
 				)
 					g = g.prev;
 				o && g.type == ")" && g.prev.type == "stat" && (g = g.prev);
@@ -5928,7 +5863,7 @@ var un = class extends wi.EditorSuggest {
 			jsonldMode: s,
 			jsonMode: a,
 			expressionAllowed: Tn,
-			skipExpression: function (i) {
+			skipExpression: (i) => {
 				G(i, "atom", "atom", "true", new r.StringStream("", 2, null));
 			},
 		};
@@ -5949,76 +5884,61 @@ var un = class extends wi.EditorSuggest {
 			typescript: !0,
 		});
 });
-(function (r) {
+((r) => {
 	r(window.CodeMirror);
-})(function (r) {
-	"use strict";
-	r.customOverlayMode = function (e, t, n) {
-		return {
-			startState: function () {
-				return {
-					base: r.startState(e),
-					overlay: r.startState(t),
-					basePos: 0,
-					baseCur: null,
-					overlayPos: 0,
-					overlayCur: null,
-					streamSeen: null,
-				};
-			},
-			copyState: function (o) {
-				return {
-					base: r.copyState(e, o.base),
-					overlay: r.copyState(t, o.overlay),
-					basePos: o.basePos,
-					baseCur: null,
-					overlayPos: o.overlayPos,
-					overlayCur: null,
-				};
-			},
-			token: function (o, s) {
-				return (
-					(o != s.streamSeen || Math.min(s.basePos, s.overlayPos) < o.start) &&
-						((s.streamSeen = o), (s.basePos = s.overlayPos = o.start)),
-					o.start == s.basePos &&
-						((s.baseCur = e.token(o, s.base)), (s.basePos = o.pos)),
-					o.start == s.overlayPos &&
-						((o.pos = o.start),
-						(s.overlayCur = t.token(o, s.overlay)),
-						(s.overlayPos = o.pos)),
-					(o.pos = Math.min(s.basePos, s.overlayPos)),
-					s.baseCur &&
-						s.overlayCur &&
-						s.baseCur.contains("line-HyperMD-codeblock") &&
-						((s.overlayCur = s.overlayCur.replace("line-templater-inline", "")),
-						(s.overlayCur += " line-background-HyperMD-codeblock-bg")),
-					s.overlayCur == null
-						? s.baseCur
-						: (s.baseCur != null && s.overlay.combineTokens) ||
-								(n && s.overlay.combineTokens == null)
-							? s.baseCur + " " + s.overlayCur
-							: s.overlayCur
-				);
-			},
-			indent:
-				e.indent &&
-				function (o, s, a) {
-					return e.indent(o.base, s, a);
-				},
-			electricChars: e.electricChars,
-			innerMode: function (o) {
-				return { state: o.base, mode: e };
-			},
-			blankLine: function (o) {
-				let s, a;
-				return (
-					e.blankLine && (s = e.blankLine(o.base)),
-					t.blankLine && (a = t.blankLine(o.overlay)),
-					a == null ? s : n && s != null ? s + " " + a : a
-				);
-			},
-		};
-	};
+})((r) => {
+	r.customOverlayMode = (e, t, n) => ({
+		startState: () => ({
+			base: r.startState(e),
+			overlay: r.startState(t),
+			basePos: 0,
+			baseCur: null,
+			overlayPos: 0,
+			overlayCur: null,
+			streamSeen: null,
+		}),
+		copyState: (o) => ({
+			base: r.copyState(e, o.base),
+			overlay: r.copyState(t, o.overlay),
+			basePos: o.basePos,
+			baseCur: null,
+			overlayPos: o.overlayPos,
+			overlayCur: null,
+		}),
+		token: (o, s) => (
+			(o != s.streamSeen || Math.min(s.basePos, s.overlayPos) < o.start) &&
+				((s.streamSeen = o), (s.basePos = s.overlayPos = o.start)),
+			o.start == s.basePos &&
+				((s.baseCur = e.token(o, s.base)), (s.basePos = o.pos)),
+			o.start == s.overlayPos &&
+				((o.pos = o.start),
+				(s.overlayCur = t.token(o, s.overlay)),
+				(s.overlayPos = o.pos)),
+			(o.pos = Math.min(s.basePos, s.overlayPos)),
+			s.baseCur &&
+				s.overlayCur &&
+				s.baseCur.contains("line-HyperMD-codeblock") &&
+				((s.overlayCur = s.overlayCur.replace("line-templater-inline", "")),
+				(s.overlayCur += " line-background-HyperMD-codeblock-bg")),
+			s.overlayCur == null
+				? s.baseCur
+				: (s.baseCur != null && s.overlay.combineTokens) ||
+						(n && s.overlay.combineTokens == null)
+					? s.baseCur + " " + s.overlayCur
+					: s.overlayCur
+		),
+		indent: e.indent && ((o, s, a) => e.indent(o.base, s, a)),
+		electricChars: e.electricChars,
+		innerMode: (o) => ({ state: o.base, mode: e }),
+		blankLine: (o) => {
+			let s, a;
+			return (
+				e.blankLine && (s = e.blankLine(o.base)),
+				t.blankLine && (a = t.blankLine(o.overlay)),
+				a == null ? s : n && s != null ? s + " " + a : a
+			);
+		},
+	});
 });
 var bi = V(require("@codemirror/language")),
 	yi = V(require("@codemirror/state")),
@@ -6079,7 +5999,7 @@ var bi = V(require("@codemirror/language")),
 		async registerCodeMirrorMode() {
 			if (!this.desktopShouldHighlight() && !this.mobileShouldHighlight())
 				return;
-			let e = window.CodeMirror.getMode({}, "javascript");
+			const e = window.CodeMirror.getMode({}, "javascript");
 			if (e.name === "null") {
 				K(
 					new w(
@@ -6088,7 +6008,7 @@ var bi = V(require("@codemirror/language")),
 				);
 				return;
 			}
-			let t = window.CodeMirror.customOverlayMode;
+			const t = window.CodeMirror.customOverlayMode;
 			if (t == null) {
 				K(
 					new w(
@@ -6097,36 +6017,31 @@ var bi = V(require("@codemirror/language")),
 				);
 				return;
 			}
-			window.CodeMirror.defineMode(xi, function (n) {
-				let o = {
-					startState: function () {
-						return {
-							...window.CodeMirror.startState(e),
-							inCommand: !1,
-							tag_class: "",
-							freeLine: !1,
-						};
-					},
-					copyState: function (s) {
-						return {
-							...window.CodeMirror.startState(e),
-							inCommand: s.inCommand,
-							tag_class: s.tag_class,
-							freeLine: s.freeLine,
-						};
-					},
-					blankLine: function (s) {
-						return s.inCommand ? "line-background-templater-command-bg" : null;
-					},
-					token: function (s, a) {
+			window.CodeMirror.defineMode(xi, (n) => {
+				const o = {
+					startState: () => ({
+						...window.CodeMirror.startState(e),
+						inCommand: !1,
+						tag_class: "",
+						freeLine: !1,
+					}),
+					copyState: (s) => ({
+						...window.CodeMirror.startState(e),
+						inCommand: s.inCommand,
+						tag_class: s.tag_class,
+						freeLine: s.freeLine,
+					}),
+					blankLine: (s) =>
+						s.inCommand ? "line-background-templater-command-bg" : null,
+					token: (s, a) => {
 						if ((s.sol() && a.inCommand && (a.freeLine = !0), a.inCommand)) {
 							let c = "";
 							if (s.match(/[-_]{0,1}%>/, !0)) {
 								(a.inCommand = !1), (a.freeLine = !1);
-								let f = a.tag_class;
+								const f = a.tag_class;
 								return (a.tag_class = ""), `line-${dn} ${fn} ${Ko} ${f}`;
 							}
-							let d = e.token && e.token(s, a);
+							const d = e.token && e.token(s, a);
 							return (
 								s.peek() == null &&
 									a.freeLine &&
@@ -6135,7 +6050,7 @@ var bi = V(require("@codemirror/language")),
 								`${c} ${fn} ${d}`
 							);
 						}
-						let A = s.match(/<%[-_]{0,1}\s*([*+]{0,1})/, !0);
+						const A = s.match(/<%[-_]{0,1}\s*([*+]{0,1})/, !0);
 						if (A != null) {
 							switch (A[1]) {
 								case "*":
