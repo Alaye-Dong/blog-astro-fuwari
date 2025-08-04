@@ -1,7 +1,7 @@
 ---
 title: 在 Springboot 项目中使用 JSP
 published: 2025-05-09
-updated: 2025-05-26
+updated: 2025-08-04
 description: ""
 image: ""
 tags:
@@ -56,7 +56,7 @@ draft: false
 </dependency>
 ```
 
-> [!INFO]
+> [!NOTE]
 > [查看和指定SpringBoot内嵌Tomcat的版本 - 牧之丨 - 博客园](https://www.cnblogs.com/exmyth/p/15479357.html)
 
 ## 配置 Web 资源目录与结构

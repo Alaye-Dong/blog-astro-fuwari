@@ -11,7 +11,7 @@ tags:
   - 嵌入式开发
   - 智能车
 render_with_liquid: flase
-updated: 2025-01-25
+updated: 2025-08-04
 ---
 
 ## 引言
@@ -37,7 +37,7 @@ updated: 2025-01-25
 
 ![VSCode拓展搜索](./assets/vscode-and-keil-collaborative-embedded-development/VSCode拓展搜索.png)
 
-> [!INFO]
+> [!IMPORTANT]
 > 这里搜索结果可能会出现两个名字类似的插件，这里做出解释：*Keil Assistant* 已于 *Jun 13, 2021* 归档转为只读。*Keil uVision Assistant* 是 *Keil Assistant* 的后续版本，由另外一个开发者 *jacksonjim* 负责继续更新及维护。 
 
 点击插件右侧的 `⚙️`-`拓展设置` 根据所开发的单片机芯片的架构和*Keil*的安装目录，完成插件的基础配置。
