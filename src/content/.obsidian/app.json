@@ -1,7 +1,7 @@
 {
-  "newFileLocation": "current",
-  "useMarkdownLinks": true,
-  "newLinkFormat": "relative",
-  "attachmentFolderPath": "./assets",
-  "alwaysUpdateLinks": true
+	"newFileLocation": "current",
+	"useMarkdownLinks": true,
+	"newLinkFormat": "relative",
+	"attachmentFolderPath": "./assets",
+	"alwaysUpdateLinks": true
 }
