@@ -8,7 +8,7 @@ import MainGridLayout from "../layouts/MainGridLayout.astro";
 
 const friendsPost = await getEntry("spec", "friends");
 
-const { Content } = await friendsPost.render();
+const { Content } = friendsPost ? await friendsPost.render() : { Content: () => null };
 
 const items = [
 	{
