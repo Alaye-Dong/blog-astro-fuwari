@@ -8,7 +8,9 @@ import MainGridLayout from "../layouts/MainGridLayout.astro";
 
 const friendsPost = await getEntry("spec", "friends");
 
-const { Content } = friendsPost ? await friendsPost.render() : { Content: () => null };
+const { Content } = friendsPost
+	? await friendsPost.render()
+	: { Content: () => null };
 
 const items = [
 	{
@@ -25,9 +27,10 @@ const items = [
 		siteurl: "https://tnxgmoe.com",
 		tags: ["技术", "全栈开发"],
 	},
-    {
+	{
 		title: "天海博客",
-		imgurl: "https://woolyun.com/wp-content/uploads/2025/05/yyl-e1746698677584.jpg",
+		imgurl:
+			"https://woolyun.com/wp-content/uploads/2025/05/yyl-e1746698677584.jpg",
 		desc: "建站经验记录，实用工具推荐，免费资源分享",
 		siteurl: "https://woolyun.com/",
 		tags: ["技术", "建站"],
