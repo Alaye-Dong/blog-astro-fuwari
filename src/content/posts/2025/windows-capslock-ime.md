@@ -46,7 +46,7 @@ Windows 的默认中英文切换方式体验较差，Shift 键既用于切换大
 
 ### 使用 CapsLock 切换中英文输入法
 
-```ahk
+```
 #Requires AutoHotkey v2.0
 #SingleInstance Force
 
@@ -71,7 +71,7 @@ CapsLock::
 
 来源：[gist.github.com](https://gist.github.com/maokwen/4d99f5c0aa2e7c0c114c708b03fb73ae)
 
-```ahk
+```
 #Include %A_ScriptDir%
 
 timeInterval := 500
