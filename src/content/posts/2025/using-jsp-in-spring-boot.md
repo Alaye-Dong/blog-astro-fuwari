@@ -134,7 +134,7 @@ public class JspController {
 
 在 `src/main/webapp/WEB-INF/jsp/` 下创建 `hello.jsp` 文件：
 
-```jsp
+```html
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
