@@ -1,5 +1,5 @@
 ---
-title: 新云服务器购买与1Panel配置指南
+title: 新云服务器购买与 1Panel 配置指南
 published: 2026-04-10
 updated: 2026-04-10
 description: ""
